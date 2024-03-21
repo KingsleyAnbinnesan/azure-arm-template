@@ -121,6 +121,10 @@ body #ad-tab-nav, body .nav-tabs:not(#startup-tab-nav) {
 a {
   color: var(--global-link-text-normal-color); }
 
+.e-popup-open .e-dropdownbase.e-nodata {
+  background: var(--drop-down-menu-bg-hover-color);
+  color: var(--drop-down-menu-text-normal-color) !important; }
+
 a:hover, a:focus {
   text-decoration: none !important;
   color: var(--global-link-text-hover-color); }
@@ -721,6 +725,12 @@ input::-ms-clear, input::-ms-reveal {
     #messageBox .message-content .list-area {
       padding: 10px 0 0 50px;
       text-align: left; }
+    #messageBox .message-content .highlight-container {
+      max-width: 411px;
+      display: inline-flex; }
+      #messageBox .message-content .highlight-container .highlight-name {
+        overflow: hidden;
+        text-overflow: ellipsis; }
   #messageBox .e-footer-content .secondary-button {
     margin-left: 10px; }
 

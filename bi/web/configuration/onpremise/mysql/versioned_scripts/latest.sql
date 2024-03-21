@@ -1,17 +1,6 @@
-Drop Table {database_name}.BOLDBI_ai_qnawidgethistory
+ALTER TABLE {database_name}.BOLDBI_ai_qnawidgethistory ADD search_date TIMESTAMP
 ;
 
-CREATE TABLE {database_name}.BOLDBI_ai_qnawidgethistory (
-   searchid VARCHAR(255) PRIMARY KEY,
-   question TEXT,
-   tableinfo TEXT,
-   fieldinfo TEXT,
-   message TEXT,
-   haserror BOOLEAN,
-   chartType TEXT,
-   uservote TEXT,
-   isreported BOOLEAN)
-;
-
-ALTER TABLE {database_name}.BOLDBI_ScheduleRunHistory ADD LogExist tinyint NOT NULL DEFAULT 0
+ALTER TABLE {database_name}.BOLDBI_ai_qnawidgethistory ADD widgetid VARCHAR(255);
+;INSERT into {database_name}.BOLDBI_ExportType (Name,IsActive) VALUES ('DashboardCache', 1)
 ;

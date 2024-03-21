@@ -1,17 +1,6 @@
-Drop Table [BoldBI_ai_qnawidgethistory]
+ALTER TABLE [BoldBI_ai_qnawidgethistory] ADD [search_date] DATETIME
 ;
 
-CREATE TABLE [BoldBI_ai_qnawidgethistory] (
-   searchid VARCHAR(255) PRIMARY KEY,
-   question TEXT,
-   tableinfo TEXT,
-   fieldinfo TEXT,
-   message TEXT,
-   haserror BIT,
-   chartType TEXT,
-   uservote TEXT,
-   isreported BIT)
-;
-
-ALTER TABLE [BOLDBI_ScheduleRunHistory] ADD [LogExist] bit NOT NULL DEFAULT '0'
+ALTER TABLE [BoldBI_ai_qnawidgethistory] ADD [widgetid] NVARCHAR(255)
+;INSERT into [BOLDBI_ExportType] (Name,IsActive) VALUES (N'DashboardCache', 1)
 ;
