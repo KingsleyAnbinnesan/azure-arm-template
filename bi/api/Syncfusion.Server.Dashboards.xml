@@ -574,6 +574,16 @@
             <param name="apiUpdateDataSourceColumn">Details about the data source passed will be updated to the specified data source id.</param>
             <returns>The response is sent as ApiResponse object</returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Controllers.V5.DataSourceController.DeleteDataSourcesColumnsJson(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiUpdateDataSourceColumn})">
+            <summary>
+            Delete the data source columns
+            </summary>
+            <remarks>
+            Users who have write access for data source and dashboard, can delete the data source column by providing respective data source details in the request body.
+            </remarks>
+            <param name="apiUpdateDataSourceColumn">Details about the data source passed will be deleted specified data source id.</param>
+            <returns>The response is sent as ApiResponse object</returns>
+        </member>
         <member name="M:Syncfusion.Server.API.Controllers.V5.DataSourceController.UpdateDataSourcesConnectionJson(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiUpdateDatasourceConnection})">
             <summary>
             Update the data source connection information

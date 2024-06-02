@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.chart.all.js
-*  version : 7.8.18
+*  version : 7.9.19
 *  Copyright Syncfusion Inc. 2001 - 2024. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -20689,7 +20689,7 @@ BoldBIDashboard.ejCandleSeries = ejExtendClass(BoldBIDashboard.EjSeriesRender, {
              visiblePoints = this._calculateVisiblePoints(currentseries).visiblePoints,
              visiblePointslength = visiblePoints.length,
              internalRegion = [],
-			 dataLabel = currentseries.marker,
+			 dataLabel = currentseries.marker.dataLabel,
              legendWidth = legend.border.width,
              translate = [],
              textSize = 0,
@@ -24496,7 +24496,7 @@ var Gradient = function (colors) {
 	        if (series.marker.visible) {
 	            for (c = 0; c < series._visiblePoints.length; c++) {
 	                currentPoint = series._visiblePoints[c];
-					location = currentPoint.location;
+					location = currentPoint.location ? currentPoint.location: currentPoint.symbolLocation;
 	                this.model.markerRegion[this.model.markerRegion.length] = { seriesIndex: d, xPos: location.X + this.canvasX, yPos: location.Y + this.canvasY, width: markerWidth, height: markerHeight };
 	            }
 	        }
@@ -26926,6 +26926,7 @@ var Gradient = function (colors) {
 				else if(data)
 					this._doClick(evt);
 			}
+            evt.preventDefault(); // 883174 - to prevent mousemove event after pointclick in device mode
         }
     },
     _pointerTouchEnd: function (e) {
@@ -27701,7 +27702,7 @@ var Gradient = function (colors) {
         var valY = !isCanvas ? clientY : valAxis.y;
         var valWidth = !isCanvas ? chartArea.width: valAxis.width;
         var valHeight = !isCanvas ? chartArea.height: valAxis.height;
-        if (((y <= (valY + valHeight) && valY <= y) && (valX <= x && x <= (valX + valWidth))) || !isCanvas) {
+        if (((y <= (valAxis.y + valHeight) && valAxis.y <= y) && (valAxis.x <= x && x <= (valAxis.x + valWidth))) || !isCanvas) {
             for (var i = 0; i < visiblePointsLength; i++) {
                 chartPoint = series._visiblePoints[i];
                 location = chartPoint.location;
@@ -27709,22 +27710,20 @@ var Gradient = function (colors) {
                 pointIndex = i;
                 closestX = null;
                 closestY = null;
-                if (!isCanvas && evt) {
-                    if ((this.svgObject.id + "_Series" + series.seriesIndex + "_Point" + i + '_symbol') == evt.target.id) {
-                        var markerSize = document.getElementById(evt.target.id).getBoundingClientRect();
-                        chartPoint.height = markerSize.height;
-                        chartPoint.width = markerSize.width;
-                        closestPoint = chartPoint;
-                        ptIndex = i;
-                    }
+                if (!isCanvas && evt && (this.svgObject.id + "_Series" + series.seriesIndex + "_Point" + i + '_symbol') == evt.target.id) {
+                    var markerSize = document.getElementById(evt.target.id).getBoundingClientRect();
+                    chartPoint.height = markerSize.height;
+                    chartPoint.width = markerSize.width;
+                    closestPoint = chartPoint;
+                    ptIndex = i;
                 }
                 else if (location) {
-                    if (x > location.X + valX - (size.width / 2) && x < location.X + valX + (size.width / 2)) {
+                    if (x > location.X + valAxis.x - (size.width / 2) && x < location.X + valAxis.x + (size.width / 2)) {
                         closestX = chartPoint.x;
                         if (BoldBIDashboard.util.isNullOrUndefined(closestX))
                             pointVisible = chartPoint.visible;
                     }
-                    if (y > location.Y + valY - (size.height / 2) && y < location.Y + valY + (size.height / 2)) {
+                    if (y > location.Y + valAxis.y - (size.height / 2) && y < location.Y + valAxis.y + (size.height / 2)) {
                         closestY = chartPoint.YValues[0];
                     }
                     if ((!BoldBIDashboard.util.isNullOrUndefined(closestX) || pointVisible) && !BoldBIDashboard.util.isNullOrUndefined(closestY)) {
@@ -29713,7 +29712,7 @@ var Gradient = function (colors) {
                     if (closestXyPoint.point) {
                         location = BoldBIDashboard.EjSvgRender.utils._getPoint(closestXyPoint.point, chartSeries);
                         var commonPointEventArgs = bbdesigner$.extend({}, BoldBIDashboard.EjSvgRender.commonChartEventArgs);
-                        commonPointEventArgs.data = { location: { x: this.mousemoveX, y: this.mousemoveX }, region: { SeriesIndex: i, Region: { PointIndex: closestXyPoint.index } } };
+                        commonPointEventArgs.data = { location: { x: this.mousemoveX, y: this.mousemoveY }, region: { SeriesIndex: i, Region: { PointIndex: closestXyPoint.index } } };
                         chart._trigger("pointRegionMouseMove", commonPointEventArgs);
                     }
                     var pointData = this.model.prevPoint;
@@ -30356,8 +30355,8 @@ var Gradient = function (colors) {
 
     chartInteractiveBehavior: function (evt, data) {
         var mouseMoveCords = this.calMousePosition(evt);
-        this.mousemoveX = evt.originalEvent.clientX;
-        this.mousemoveY = evt.originalEvent.clientY;
+        this.mousemoveX = mouseMoveCords.X;
+        this.mousemoveY = mouseMoveCords.Y;
 
         var id = "#" + this.svgObject.id;
         if (this.mouseWheelCoords) {

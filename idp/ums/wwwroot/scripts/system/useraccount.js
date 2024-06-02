@@ -154,10 +154,27 @@
                     prefillDbNames();
                     if (!isBoldBI) {
                         hideDataStore();
-                        $(".schema-prefix-hide").removeClass("hidden").addClass("show");
                     }
-                    else {
-                        $(".schema-prefix-hide").removeClass("show").addClass("hidden");
+
+                    $(".schema-prefix-hide").removeClass("hide").addClass("show");
+                    if (!IsBiPrefixSchema) {
+                        $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    }
+
+                    var obj = document.getElementById("database-type");
+                    var itemsList = obj.ej2_instances[0].list.querySelectorAll('.e-list-item');
+                    if (isBoldReports && !IsOracleSupportReports) {
+                        itemsList[3].style.display = "none";
+                    }
+                    else if (isBoldReports && IsOracleSupportReports) {
+                        itemsList[3].style.display = "";
+                    }
+
+                    if (isBoldBI && !IsOracleSupportBi) {
+                        itemsList[3].style.display = "none";
+                    }
+                    else if (isBoldBI && IsOracleSupportBi) {
+                        itemsList[3].style.display = "";
                     }
                 }
                 $('.popover').hide();
