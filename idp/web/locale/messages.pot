@@ -1357,7 +1357,7 @@ msgstr ""
 msgid "Remember me"
 msgstr ""
 
-msgid "Sites"
+msgid "sites details"
 msgstr ""
 
 msgid "Settings"
@@ -3224,5 +3224,17 @@ msgid "The requested tenant details not found."
 msgstr ""
 
 msgid "Input contains harmful content. Please review."
+msgstr ""
+
+msgid "Please restart the application for the changes to take effect. For more information,"
+msgstr ""
+
+msgid "Restart Application"
+msgstr ""
+
+msgid "This URI is used to receive the response from the authorization server. When setting up your OAuth 2.0 application, it's essential to register the redirect URI using only lowercase characters."
+msgstr ""
+
+msgid "This URI is used to receive the response from the authorization server. When setting up your OpenID Connect application, it's essential to register the redirect URI using only lowercase characters."
 msgstr ""
 

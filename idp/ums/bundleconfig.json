@@ -42,7 +42,7 @@
       "wwwroot/scripts/administration/emailactivitylog.js",
       "wwwroot/scripts/administration/managelanguage.js"
     ],
-    "integrity": "sha384-HWJKavsBPev6ZIqX+dmfUCzXfaI9KSNGHinVevwTpLkuuvymyiVbOg9nCv3qpewM"
+    "integrity": "sha384-YjbCGYpkKPfS1VTURbwZ/iITfbgYyWAd7c5C7g30lBEPY4WC/CTwu7TR05D589cS"
   },
   {
     "bundles/js/user-settings.js": [
@@ -172,7 +172,7 @@
       "wwwroot/scripts/system/licenseselection.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-NAxXvW/tH1hgkGw6zfkEKoyxrl81TIMvRY+2uTvoh9uF4fx2AYLXIPsoCnCeWUTM"
+    "integrity": "sha384-0VOeecu9UKMX1RnBywUQeBvmGPPOGr+MRJCA3jEhWmxJl0BLTsvK2j875xA2N9+g"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -299,7 +299,7 @@
       "wwwroot/styles/scss/pages/administration/managelanguage.css",
       "wwwroot/styles/scss/pages/components/grid.css"
     ],
-    "integrity": "sha384-TFcOlMJB25W7A6EY9S9dKqyfyqFpGC2w8SSCxBfdiINlfZ/qsLBPdMaZsu09rvpD"
+    "integrity": "sha384-qqmnPdG5mMkOVnsNGsFDmyRvVC00BEojSVL6oZt+6zBfcNw81GpM04MmE9yaxyWh"
   },
   {
     "bundles/css/user-settings.css": [

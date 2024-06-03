@@ -319,6 +319,11 @@ function LoginDisclaimerDialogOpen() {
         contentCheckElement.disabled = true;
     }
 }
+
+$(document).on("click", "#close-info-dialog, #close-button", function() {
+    LoginDisclaimerDialogClose();
+});
+
 function LoginDisclaimerDialogClose() {
     document.getElementById("login-disclaimer-dialog").ej2_instances[0].hide();
     var contentCheckElement = document.getElementById("content-check");
