@@ -272,7 +272,7 @@
       "wwwroot/styles/scss/pages/error/error-message.css",
       "wwwroot/styles/scss/pages/topmenu.css"
     ],
-    "integrity": "sha384-oJYDa124EM5wz4vXYc2fpa9wm7JXZvpLrkH+9O/I5ngeE3DZANIesUMvcnp/GVAm"
+    "integrity": "sha384-z2Bs5/L7MUpStFooFDPAkqn1Xdms6FGJIfa7klCGmEaCJID3VZwRa+K6ixT4eYZm"
   },
   {
     "bundles/css/ej2-theme.css": [
@@ -356,7 +356,7 @@
       "wwwroot/styles/fonts/font-server.css",
       "wwwroot/styles/scss/pages/newmaster.css"
     ],
-    "integrity": "sha384-Y3I3ZnFTn66fJMmPYTxV5jBuTvZeGg7/1Sd/xsUXyWrCQTfGe+TMwZTNirrUGmlf"
+    "integrity": "sha384-qM+qeDj0Vig5RNoAdk93Z/aqzFxHUUThO3o1/BsF98IfBR/kuhaYU/vDzHxoP/8U"
   },
   {
     "bundles/css/homepage.css": [
@@ -375,7 +375,7 @@
       "wwwroot/styles/scss/pages/profile.css",
       "wwwroot/styles/scss/homepage.css"
     ],
-    "integrity": "sha384-esf35IsdzA7zXkheX9yWO5wV73lU9tmrUrncI4hoY2NkyicCDvqlSNyo4aUQxLMK"
+    "integrity": "sha384-tUFBOIT+/4vfQYVTDhgtvet7M+Kotx7IIAXyLBdOIln3vhGAn5weCzhpiNhfbZ3R"
   },
   {
     "bundles/css/sites.css": [
@@ -423,7 +423,7 @@
       "wwwroot/styles/scss/ej2customization/spinner-customization.css",
       "wwwroot/styles/scss/pages/components/radiobutton.css"
     ],
-    "integrity": "sha384-IYJfZ2X6D/wclbE5uhnkPYG97pNJVtwTf7OuxpsK+K6+2h1wRkfxM5D2lJGU6Pya"
+    "integrity": "sha384-P+SV6GEo4bSnKCpFM8MA0y0HEUVD7b5a9CQrG+JjBSVwaXi91Q0ZfLz79aBiK7Pb"
   },
   {
     "bundles/css/addtenantiframe.css": [
@@ -446,7 +446,7 @@
       "wwwroot/styles/scss/pages/customattribute/custom-attribute.css",
       "wwwroot/styles/scss/pages/addtenant.css"
     ],
-    "integrity": "sha384-yVaJ+40WVCJq51jLXmVJfTHj/ckRqraUSUfMDYUU87pTMls0Q4txDsbL5gECmRNI"
+    "integrity": "sha384-q+vBvxUcf2Q/Dp/bsy2M6ysaqzA3ChKiFoWmcAJ6Mej0xksgqy5gOSi0wE6LSSa7"
   },
   {
     "bundles/fonts/font-robotoregular.css": [
@@ -524,7 +524,7 @@
       "wwwroot/styles/scss/pages/newmaster.css",
       "wwwroot/styles/scss/pages/serverconfiguration/autodeployment.css"
     ],
-    "integrity": "sha384-x7e9dZNk/PlOah13FUjrSmouFx9y9itZpTrauFF2UPTIXUSD03ogxcNfDjdZZp53"
+    "integrity": "sha384-y7WgB9OYaCNn9dnU0I/jBOUtsNxSMciWuNt35cwrxE5eyr/3tRXhYjXX6hPEsI8b"
   },
   {
     "bundles/css/cssloader.css": [
