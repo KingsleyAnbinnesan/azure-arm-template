@@ -222,6 +222,7 @@ CREATE TABLE {database_name}.BOLDTC_TMGroup (
 	Name nvarchar(255) NOT NULL,
 	Description nvarchar(1026),
 	Color nvarchar(255) NOT NULL,
+	Color nvarchar(255) NOT NULL,
 	DirectoryTypeId int NOT NULL,
 	ExternalProviderId nvarchar(512),
 	ModifiedDate datetime NOT NULL,
@@ -235,6 +236,7 @@ CREATE TABLE {database_name}.BOLDTC_TenantUser (
 	TenantInfoId char(38) NOT NULL,
 	IsFavorite tinyint(0) NOT NULL DEFAULT '0',
 	IsActive tinyint(1) NOT NULL,
+    LastAccessedDate datetime NULL,
   CONSTRAINT PK_BOLDTC_TENANTUSER PRIMARY KEY (Id ASC)
 )
 ;

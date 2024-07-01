@@ -2767,7 +2767,7 @@ var Designer = {
                 queryParameter: "Query Parameter",
                 StoredProcedure: "Stored Procedure Parameter",
                 queryJoiner: "Query Joiner",
-                dashboardDesigner: "Dashboard Designer",
+                dashboardDesigner: "Dashboard",
                 relativeDateOptions: "Add Relative Date Range",
                 loginWindow: "Login Window",
                 dataSourceAdvancePanel: "Data Source AdvancePanel",

@@ -1299,7 +1299,7 @@
             <param name="itemId">Item id</param>
             <returns>The response is sent as a string</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.AddSchedule(Syncfusion.Server.Base.DataClasses.ApiScheduleRequest)">
+        <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.AddRefreshSchedule(Syncfusion.Server.Base.DataClasses.ApiScheduleRequest)">
             <summary>
             Add schedule details.
             </summary>

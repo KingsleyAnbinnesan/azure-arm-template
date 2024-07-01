@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-+Z8AYy9F+tz+Le0JEVgObtz99zrgMblzwFCVeYu85ORtq0XGmhoFZGYnEJOK4CPM"
+    "integrity": "sha384-ky3qSPd2ub5KFo0h1F5tkmEce578Fr8hUYACmbXcER3Y5dhm/+fF5EoWFXJHt5OF"
   },
   {
     "bundles/js/sites.js": [
@@ -375,7 +375,7 @@
       "wwwroot/styles/scss/pages/profile.css",
       "wwwroot/styles/scss/homepage.css"
     ],
-    "integrity": "sha384-83AZaDZtlws1O7SNGEs3jRqvAAai1ToEMdutJnOUVc3nBzPqosre+/H8EYVWZpC4"
+    "integrity": "sha384-0hlSJi7e6mr7g11Ym/9w6XE4Mz9CA9mkzKcNwO3yvwsncLn0qXAXaJq9gdXocn2P"
   },
   {
     "bundles/css/sites.css": [
@@ -536,12 +536,12 @@
     "bundles/css/lighttheme.css": [
       "wwwroot/styles/scss/default/light_default.css"
     ],
-    "integrity": "sha384-/5ImUc40eZYIUUOCCYr6XADHGebr3/HRCeirWjAQ7B8ASruPdkaGj1n4sycDL/t/"
+    "integrity": "sha384-a+ZRdsaM7HT/0rO4Dh66GrnabXpWsJNUruq0fRVuozyqQYUomGnkzWDp0vKb2mFY"
   },
   {
     "bundles/css/darktheme.css": [
       "wwwroot/styles/scss/default/dark_default.css"
     ],
-    "integrity": "sha384-RTxNlOOL88419Aa4/BJfYbsyw8tr+yZ01btjfaNWr/pHSAJPvlKOj+rycd4LUoFR"
+    "integrity": "sha384-LvTVLteu1LvPwuQi8BmR3M74HOuSi/TmoKECN2NnDjy5qS/AgfzEBx+g+Sg2qD26"
   }
 ]
