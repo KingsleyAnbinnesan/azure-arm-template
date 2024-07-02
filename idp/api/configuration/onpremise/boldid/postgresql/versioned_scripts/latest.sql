@@ -1,1 +1,1 @@
-ALTER TABLE [BOLDTC_TenantUser] ADD [LastAccessedDate] datetime NULL;
+ALTER TABLE BOLDTC_TenantUser ADD LastAccessedDate timestamp NULL;

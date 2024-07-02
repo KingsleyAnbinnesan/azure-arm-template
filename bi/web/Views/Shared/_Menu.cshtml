@@ -54,7 +54,7 @@
     showProfile = showProfile && (showYourSites || showManageSite || showMyProfile || showLogout);
     var isUserBasedMenu = ServerAppConfig.IsSelfHosted ? ServerAppConfig.IsUserBasedMenu : _globalAppSettings.SystemSettings.PreviewFeatures.IsUserBasedMenu;
     var isAzureAppService = GlobalAppSettings.GetRunTimeEnvironMent() == BoldServiceEnvironment.AzureAppService;
-    var ishideDashboardMenu = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
+    var ishideDashboardMenu = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri) && !identityResponse.IsAdmin;
     var etlEndpointPrefix = ServerAppConfig.IsSelfHosted ? ServerAppConfig.InternalAppIdpUrl : ServerAppConfig.AppSettings.EndPoints.ETLSiteURL;
     var navigateETLUrl = etlEndpointPrefix + (ServerAppConfig.IsSelfHosted ? $"/etlservice/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
     if (allItemsCount == null && isUserBasedMenu)
