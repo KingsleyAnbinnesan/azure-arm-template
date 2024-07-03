@@ -222,7 +222,6 @@ CREATE TABLE {database_name}.BOLDTC_TMGroup (
 	Name nvarchar(255) NOT NULL,
 	Description nvarchar(1026),
 	Color nvarchar(255) NOT NULL,
-	Color nvarchar(255) NOT NULL,
 	DirectoryTypeId int NOT NULL,
 	ExternalProviderId nvarchar(512),
 	ModifiedDate datetime NOT NULL,

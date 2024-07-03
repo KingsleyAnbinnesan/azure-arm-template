@@ -55,7 +55,7 @@
     "bundles/js/licenese-settings.js": [
       "wwwroot/scripts/administration/licensesettings.js"
     ],
-    "integrity": "sha384-rSjePLdTpcWljnT7lWC5eoogqWLPZz0fryAM52WQI3Ov3Drv0xDycrLTCq5rkEnw"
+    "integrity": "sha384-a/uqbjU6ngJzvEbXacryFtHc1Ml2SZK+B9NWQDDpaQV54zLS7+mMscLHCukfrioD"
   },
   {
     "bundles/js/homepage.js": [
@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-ky3qSPd2ub5KFo0h1F5tkmEce578Fr8hUYACmbXcER3Y5dhm/+fF5EoWFXJHt5OF"
+    "integrity": "sha384-1tWPbt9JFfECW3/rQBOLwNl3pzKcbWH2hVq3c3aY+FvsdYYnEA7XtShPLWJxrsCx"
   },
   {
     "bundles/js/sites.js": [

@@ -7,7 +7,7 @@
     var copyrightClass = GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo ? "show" : "hide";
     var separatorparagraphClass = (GlobalAppSettings.SystemSettings.IsEnablePoweredBySyncfusion && GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo) ? "show" : "hide";
     var separatorFooterClass = (GlobalAppSettings.SystemSettings.IsEnablePoweredBySyncfusion || GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo) ? "show" : "hide";
-    var copyrightInformation = HttpUtility.HtmlDecode(GlobalAppSettings.SystemSettings.CopyrightInformation);
+    var copyrightInformation = GlobalAppSettings.SystemSettings.CopyrightInformation;
 }   
 
 <div id="base-footer-div">

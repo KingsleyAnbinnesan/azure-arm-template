@@ -538,7 +538,7 @@ function loadTenantCards(baseUrl, skip, take) {
                     var useCustomBranding = tenant.UseCustomBranding;
                     var brandingHtml = useCustomBranding
                         ? `<img id="icon-logo" class="icon-logo-container"  loading="lazy" src="@GlobalAppSettings.SystemSettings.LoginLogo">`
-                        : `<img id="icon-logo" class="icon-logo"  loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}">`; 
+                        : `<img id="icon-logo" class="icon-logo" loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}" onerror="this.onerror=null;this.src='${brokenImageForTiles}';">`; 
                     
                     var cardHtml = `<div class="tenant-card card">
                                            <div class="icon-container">${brandingHtml}</div>
@@ -591,7 +591,7 @@ function loadFavoriteCards(baseUrl, skip, take) {
                     var useCustomBranding = tenant.UseCustomBranding;
                     var brandingHtml = useCustomBranding
                         ? `<img id="icon-logo" class="icon-logo-container"  loading="lazy" src="@GlobalAppSettings.SystemSettings.LoginLogo">`
-                        : `<img id="icon-logo" class="icon-logo"  loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}">`;
+                        : `<img id="icon-logo" class="icon-logo"  loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}" onerror="this.onerror=null;this.src='${brokenImageForTiles}';">`;
 
 
                     var cardHtml = `<div class="tenant-card card">
