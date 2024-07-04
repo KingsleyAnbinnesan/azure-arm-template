@@ -4,7 +4,7 @@
     var copyrightClass = GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo ? "show" : "hide";
     var separatorparagraphClass = (GlobalAppSettings.SystemSettings.IsEnablePoweredBySyncfusion && GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo) ? "show" : "hide";
     var separatorFooterClass = (GlobalAppSettings.SystemSettings.IsEnablePoweredBySyncfusion || GlobalAppSettings.SystemSettings.IsEnableCopyrightInfo) ? "show" : "hide";
-    var copyrightInformation = GlobalAppSettings.SystemSettings.CopyrightInformation;
+    var copyrightInformation = HttpUtility.HtmlDecode(GlobalAppSettings.SystemSettings.CopyrightInformation);
 }
  
 <script nonce="@Context.Items["ScriptNonce"]">

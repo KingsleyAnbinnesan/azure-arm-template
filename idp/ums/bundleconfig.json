@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-1tWPbt9JFfECW3/rQBOLwNl3pzKcbWH2hVq3c3aY+FvsdYYnEA7XtShPLWJxrsCx"
+    "integrity": "sha384-lWES6qAOwZcGMCdAzAQA1jmcNAx5Q4o6MlCW30PNlxdiWeWo9byktmUYfEYstAQF"
   },
   {
     "bundles/js/sites.js": [

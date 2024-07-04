@@ -151,6 +151,8 @@ function resizeContainer(){
 
 }
 function initializePage() {
+    var currentUrl = window.location.search;
+    var isFavoriteTab = (currentUrl == "?view=favorites");
     generateProfileAvatar();
     addPlacehoder("#search-area-sites");
     addPlacehoder("#search-area");
@@ -159,7 +161,7 @@ function initializePage() {
     showAppropriateTab();
     initializeFavoriteGrid();
     initializeTooltip();
-    handleTabClicks();
+    handleTabClicks(isFavoriteTab);
     handleLogoError();
     activeTab();
    
@@ -332,14 +334,14 @@ $(document).on('click', '.toggle-button-favorite', function (event) {
     });
 });
 
-$(document).on('input', '#search-tenants-allsites', function () {
+$(document).on('keyup', '#search-tenants-allsites', function () {
     if ($('#card-view-button').hasClass('active')) {
         skipAll = 0;
         $("#tenant-cards-container-all").empty();
         loadTenantCards(TenantSites + "?userId=" + userId, skipAll, take);
     }
 });
-$(document).on('input', '#search-tenants-favorite', function () {
+$(document).on('keyup', '#search-tenants-favorite', function () {
     if ($('#card-view-button').hasClass('active')) {
         skipFavorite = 0;
         $("#tenant-cards-container-favorite").empty();
@@ -533,12 +535,12 @@ function loadTenantCards(baseUrl, skip, take) {
                     $(".no-records").show();
                     return;
                 }
-                
+                $(".no-records").hide();
                 allTenants.forEach(function (tenant) {
                     var useCustomBranding = tenant.UseCustomBranding;
                     var brandingHtml = useCustomBranding
                         ? `<img id="icon-logo" class="icon-logo-container"  loading="lazy" src="@GlobalAppSettings.SystemSettings.LoginLogo">`
-                        : `<img id="icon-logo" class="icon-logo" loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}" onerror="this.onerror=null;this.src='${brokenImageForTiles}';">`; 
+                        : `<img id="icon-logo" class="icon-logo" loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}">`; 
                     
                     var cardHtml = `<div class="tenant-card card">
                                            <div class="icon-container">${brandingHtml}</div>
@@ -551,6 +553,12 @@ function loadTenantCards(baseUrl, skip, take) {
                                                 </div>`;
                     allSitesContainer.append(cardHtml);
                     fetchCard=false;
+                });
+
+                document.querySelectorAll('.icon-logo').forEach(function(img) {
+                    img.addEventListener('error', function() {
+                        this.src = brokenImageForTiles;
+                    });
                 });
             }
         },
@@ -586,12 +594,12 @@ function loadFavoriteCards(baseUrl, skip, take) {
                     $(".no-records").show();
                     return;
                 }
-               
+                $(".no-records").hide();
                 allTenants.forEach(function (tenant) {
                     var useCustomBranding = tenant.UseCustomBranding;
                     var brandingHtml = useCustomBranding
                         ? `<img id="icon-logo" class="icon-logo-container"  loading="lazy" src="@GlobalAppSettings.SystemSettings.LoginLogo">`
-                        : `<img id="icon-logo" class="icon-logo"  loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}" onerror="this.onerror=null;this.src='${brokenImageForTiles}';">`;
+                        : `<img id="icon-logo" class="icon-logo"  loading="lazy" src="${tenant.SiteUrl}/get-client-logo?theme=${theme}">`;
 
 
                     var cardHtml = `<div class="tenant-card card">
@@ -605,6 +613,12 @@ function loadFavoriteCards(baseUrl, skip, take) {
                                                 </div>`;
                     favoriteSitesContainer.append(cardHtml);
                     fetchCard=false;
+                });
+
+                document.querySelectorAll('.icon-logo').forEach(function(img) {
+                    img.addEventListener('error', function() {
+                        this.src = brokenImageForTiles;
+                    });
                 });
             }
         },
@@ -624,89 +638,91 @@ function initializeTooltip() {
         tooltip.content = args.target.closest("td").innerText;
     }
 }
-
-function handleTabClicks() {
+$(document).on('click',"[data-toggle='tab']", function(){
+    var currentUrl = (window.location.search).toString();
+    var isFavoriteTab= ($(this).attr("id") == "favorite-sites-tab");
+    handleTabClicks(isFavoriteTab);
+})
+function handleTabClicks(isFavoriteTab) {
     onScroll=false;
-    $("a[data-toggle='tab']").on('click', function (e) {
-        var currentUrl = (window.location.search).toString();
-        if ($(this).attr("id") == "favorite-sites-tab" && currentUrl != "?view=favorites"  ) {
-            $("#favorites").show();
-            $("#all-sites").hide();
-            $(".inner-card ").hide();
-            $("#tenant-cards-container-favorite").empty();
-            var query = (window.location.search).toString();
-            if (query != "?view=favorites") {
-                history.pushState(null, '', '?view=favorites');
-            }
+    var currentUrl = (window.location.search).toString();
+    if (isFavoriteTab ) {
+        $("#favorites").show();
+        $("#all-sites").hide();
+        $(".inner-card ").hide();
+        $("#tenant-cards-container-favorite").empty();
+        var query = (window.location.search).toString();
+        if (query != "?view=favorites") {
+            history.pushState(null, '', '?view=favorites');
+        }
 
-            var searchQuery = window.location.href.slice(window.location.href.indexOf('?') + 1).split('=');
-            if (searchQuery[0] == "searchKey") {
-                $("#search-tenants-favorite").val(searchQuery[1]);
-            }
-            else {
+        var searchQuery = window.location.href.slice(window.location.href.indexOf('?') + 1).split('=');
+        if (searchQuery[0] == "searchKey") {
+            $("#search-tenants-favorite").val(searchQuery[1]);
+        }
+        else {
 
-                $("#search-tenants-favorite").val();
-            }
-            $("#search-tenants-allsites").val('');
-            $(".close-icon").css("display", "none");
-            $(".search-allsites").css("display", "block");
-            $("#sorting-sites").hide();
-            $("#sorting-favorites").show();
-            $("#sorting-options-favorites").hide();
-            $('#all-sites-container').scrollTop(0);
-            var gridObj = document.getElementById("FavoriteGrid").ej2_instances[0];
-            resizing(gridObj);
-            resizeContainer();
-            gridObj.datasource = new ej.data.DataManager({ url: TenantFavoriteListurl + "?userId=" + userId, adaptor: new ej.data.UrlAdaptor() });
-            gridObj.refresh();
-            if ($('#card-view-button').hasClass('active')) {
-                onScroll=true;
-                skipFavorite=0;
-                loadFavoriteCards(TenantFavoriteListurl + "?userId=" + userId, skipFavorite, take);
-                $('#favorite-sites-tile').show();
-            }
-            $(".searchAll-sites").hide();
-            $(".searchFavorite-sites").show();
             $("#search-tenants-favorite").val();
-            
-            $("#search-tenants-favorite").hide();
         }
-        else if ($(this).attr("id") == "all-sites-tab" && currentUrl != "?view=all-sites") {
-           
-            $("#all-sites").show();
-            $("#favorites").hide();
-            $(".inner-card ").hide();
-            $("#tenant-cards-container-all").empty();
-            var query = (window.location.search).toString();
-            if (query != "?view=all-sites") {
-                history.pushState(null, '', '?view=all-sites');
-            }
-            $("#search-tenants-favorite").val('');
-            $(".close-icon").css("display", "none");
-            $(".search-favorite").css("display", "block");
-            $("#sorting-sites").show();
-            $("#sorting-favorites").hide();
-            $("#sorting-options-sites").hide();
-            $('#all-sites-container').scrollTop(0);
-            var gridObj = document.getElementById("AllSitesGrid").ej2_instances[0];
-            resizing(gridObj);
-            resizeContainer();
-            gridObj.datasource = new ej.data.DataManager({ url: TenantSites + "?userId=" + userId, adaptor: new ej.data.UrlAdaptor() });
-            gridObj.refresh();
-            if ($('#card-view-button').hasClass('active')) {
-                onScroll = true;
-                skipAll=0;
-                loadTenantCards(TenantSites + "?userId=" + userId, skipAll, take);
-                $("#all-sites-tile").show();
-            }
-            $(".searchFavorite-sites").hide();
-            $(".searchAll-sites").show();
-            $("#search-tenants-allsites").val();
-            
-            $("#search-tenants-allsites").hide();
+        $("#search-tenants-allsites").val('');
+        $(".close-icon").css("display", "none");
+        $(".search-allsites").css("display", "block");
+        $("#sorting-sites").hide();
+        $("#sorting-favorites").show();
+        $("#sorting-options-favorites").hide();
+        $('#all-sites-container').scrollTop(0);
+        var gridObj = document.getElementById("FavoriteGrid").ej2_instances[0];
+        resizing(gridObj);
+        resizeContainer();
+        gridObj.datasource = new ej.data.DataManager({ url: TenantFavoriteListurl + "?userId=" + userId, adaptor: new ej.data.UrlAdaptor() });
+        gridObj.refresh();
+        if ($('#card-view-button').hasClass('active')) {
+            onScroll=true;
+            skipFavorite=0;
+            loadFavoriteCards(TenantFavoriteListurl + "?userId=" + userId, skipFavorite, take);
+            $('#favorite-sites-tile').show();
+        }
+        $(".searchAll-sites").hide();
+        $(".searchFavorite-sites").show();
+        $("#search-tenants-favorite").val();
 
+        $("#search-tenants-favorite").hide();
+    }
+    else {
+
+        $("#all-sites").show();
+        $("#favorites").hide();
+        $(".inner-card ").hide();
+        $("#tenant-cards-container-all").empty();
+        var query = (window.location.search).toString();
+        if (query != "?view=all-sites") {
+            history.pushState(null, '', '?view=all-sites');
         }
-    });
+        $("#search-tenants-favorite").val('');
+        $(".close-icon").css("display", "none");
+        $(".search-favorite").css("display", "block");
+        $("#sorting-sites").show();
+        $("#sorting-favorites").hide();
+        $("#sorting-options-sites").hide();
+        $('#all-sites-container').scrollTop(0);
+        var gridObj = document.getElementById("AllSitesGrid").ej2_instances[0];
+        resizing(gridObj);
+        resizeContainer();
+        gridObj.datasource = new ej.data.DataManager({ url: TenantSites + "?userId=" + userId, adaptor: new ej.data.UrlAdaptor() });
+        gridObj.refresh();
+        if ($('#card-view-button').hasClass('active')) {
+            onScroll = true;
+            skipAll=0;
+            loadTenantCards(TenantSites + "?userId=" + userId, skipAll, take);
+            $("#all-sites-tile").show();
+        }
+        $(".searchFavorite-sites").hide();
+        $(".searchAll-sites").show();
+        $("#search-tenants-allsites").val();
+
+        $("#search-tenants-allsites").hide();
+
+    }
 }
 function resizing(gridObj) {
     if (gridObj != null) {
