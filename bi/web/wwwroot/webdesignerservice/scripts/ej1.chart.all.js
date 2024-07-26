@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.chart.all.js
-*  version : 7.11.11
+*  version : 7.11.15
 *  Copyright Syncfusion Inc. 2001 - 2024. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -27702,7 +27702,7 @@ var Gradient = function (colors) {
         var valY = !isCanvas ? clientY : valAxis.y;
         var valWidth = !isCanvas ? chartArea.width: valAxis.width;
         var valHeight = !isCanvas ? chartArea.height: valAxis.height;
-        if (((y <= (valY + valHeight) && valY <= y) && (valX <= x && x <= (valX + valWidth))) || !isCanvas) {
+        if (((y <= (valAxis.y + valHeight) && valAxis.y <= y) && (valAxis.x <= x && x <= (valAxis.x + valWidth))) || !isCanvas) {
             for (var i = 0; i < visiblePointsLength; i++) {
                 chartPoint = series._visiblePoints[i];
                 location = chartPoint.location;
@@ -27710,22 +27710,20 @@ var Gradient = function (colors) {
                 pointIndex = i;
                 closestX = null;
                 closestY = null;
-                if (!isCanvas && evt) {
-                    if ((this.svgObject.id + "_Series" + series.seriesIndex + "_Point" + i + '_symbol') == evt.target.id) {
-                        var markerSize = document.getElementById(evt.target.id).getBoundingClientRect();
-                        chartPoint.height = markerSize.height;
-                        chartPoint.width = markerSize.width;
-                        closestPoint = chartPoint;
-                        ptIndex = i;
-                    }
+                if (!isCanvas && evt && (this.svgObject.id + "_Series" + series.seriesIndex + "_Point" + i + '_symbol') == evt.target.id) {
+                    var markerSize = document.getElementById(evt.target.id).getBoundingClientRect();
+                    chartPoint.height = markerSize.height;
+                    chartPoint.width = markerSize.width;
+                    closestPoint = chartPoint;
+                    ptIndex = i;
                 }
                 else if (location) {
-                    if (x > location.X + valX - (size.width / 2) && x < location.X + valX + (size.width / 2)) {
+                    if (x > location.X + valAxis.x - (size.width / 2) && x < location.X + valAxis.x + (size.width / 2)) {
                         closestX = chartPoint.x;
                         if (BoldBIDashboard.util.isNullOrUndefined(closestX))
                             pointVisible = chartPoint.visible;
                     }
-                    if (y > location.Y + valY - (size.height / 2) && y < location.Y + valY + (size.height / 2)) {
+                    if (y > location.Y + valAxis.y - (size.height / 2) && y < location.Y + valAxis.y + (size.height / 2)) {
                         closestY = chartPoint.YValues[0];
                     }
                     if ((!BoldBIDashboard.util.isNullOrUndefined(closestX) || pointVisible) && !BoldBIDashboard.util.isNullOrUndefined(closestY)) {
@@ -29847,14 +29845,13 @@ var Gradient = function (colors) {
                             }
                             this.svgRenderer._setAttr(bbdesigner$(this.svgObject).find("#" + this.svgObject.id + "_TrackToolTip"), { 'transform': 'translate(' + trans.x + ',' + trans.y + ')' });
                             bbdesigner$('#' + this.svgObject.id + "_TrackToolTip").attr("visibility", "visible");
-                            var isCanvas = this.model.enableCanvasRendering;
                             location = { X: !isCanvas ? evt.originalEvent.clientX : (data.location.x - this.model.m_AreaBounds.X), Y: !isCanvas ? evt.originalEvent.clientY :Math.abs(data.location.y - (this.model.m_AreaBounds.Y)) };
                         } else {
                             if (bbdesigner$(this.svgObject).find("#" + this.svgObject.id + "_TrackToolTip").length == 0) {
                                 var transToolTipOptions = { 'id': this.svgObject.id + '_TrackToolTip' };
                                 this.gTransToolEle = this.svgRenderer.createGroup(transToolTipOptions);
                             }
-                            location = { X: (data.location.x), Y: Math.abs(data.location.y) };
+                            location = { X: !isCanvas ? evt.originalEvent.clientX : (data.location.x), Y: !isCanvas ? evt.originalEvent.clientY : Math.abs(data.location.y) };
                         }
 
 
@@ -30357,8 +30354,8 @@ var Gradient = function (colors) {
 
     chartInteractiveBehavior: function (evt, data) {
         var mouseMoveCords = this.calMousePosition(evt);
-        this.mousemoveX = evt.originalEvent.clientX;
-        this.mousemoveY = evt.originalEvent.clientY;
+        this.mousemoveX = mouseMoveCords.X;
+        this.mousemoveY = mouseMoveCords.Y;
 
         var id = "#" + this.svgObject.id;
         if (this.mouseWheelCoords) {
@@ -32055,8 +32052,8 @@ var Gradient = function (colors) {
             bbdesigner$("#" + this.svgObject.id + "_TrackToolTip").show();
 			if (!parentZindex)
                 parentZindex = bbdesigner$('#' + this._id)[0].offsetParent.style.zIndex;
-			x = !isCanvas ? location.X : x;
-			y = !isCanvas ? location.Y : y;
+            x = !isCanvas ? (this.model.AreaType == "none" ? location.X + padding : location.X ): x;
+            y = !isCanvas ? (this.model.AreaType == "none" ? location.Y + padding : location.Y) : y;
             var rectOptions = {
                 'top': y + bbdesigner$(document).scrollTop(),
                 'left': x + bbdesigner$(document).scrollLeft(),

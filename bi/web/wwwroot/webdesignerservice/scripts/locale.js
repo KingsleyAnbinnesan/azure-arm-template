@@ -298,7 +298,8 @@
                 kpiValueText: "KPI Value",
 				noDataContainerText: "No Data Appearance",
 				summaryRowText: "Summary Row",
-				customizeBtnText: "Customize",
+                customizeBtnText: "Customize",
+                configureButton: "Configure",
 				changeButtonText: "Change",
 				persistenceNotificationsText: "Maintains the expanded and collapsed state of the nodes",
                 performanceDelayNotificationsText: "Enabling this property will disable virtualization in the Pivot grid, which can cause performance delays when working with large sets of records",
@@ -419,7 +420,11 @@
 						paddingText: "Padding"
 					},
 					showShadowText: "Show Shadow",
-					enableWidgetTransparency: "Enable Widget Transparency"
+					enableWidgetTransparency: "Enable Widget Transparency",
+                    enableBackgroundColor: "Enable Background Color",
+                    enableBackgroundImage: "Enable Background Image",
+                    foregroundColor: "Foreground Color",
+                    enableForegroundColor: "Enable Foreground Color"
                 },
                 containerActions: {
                     showMaximizeText: "Allow Maximize View",
@@ -429,7 +434,9 @@
                     pinWidgetText: "Pin Widget",
                     actionText: "Actions",
                     allowExportingText: "Allow Exporting",
-					showHeaderText: "Show Header"
+					showHeaderText: "Show Header",
+                    canvasStyle: "Canvas Style",
+                    bannerPanelStyle: "Banner Panel Style"
                 },
                 exportSettings: {
                     csvExportText: "Allow CSV Export",
@@ -446,7 +453,8 @@
 					allowAccessVia: "Access via",
 					accessViaWidgetTitle: "Widget Header",
 					accessViaWidgetSelection: "Widget Selection",
-					accessViaBoth: "Both Widget Header & Selection"
+                    accessViaBoth: "Both Widget Header & Selection",
+                    viewDataCustomize: "Custom"
                 },
                 basicSettings: {
                     allowSortingText: "Allow Sorting",
@@ -1154,6 +1162,8 @@
                 extractModeMessageMongoDB: "Initially it will extract {0} records. Remaining records will be extracted based on configured refresh settings.",
                 extractModeMessageSqlite: "It will extract {0} records only.",
                 liveWebModeMessage: "For optimum performance in live mode Web API, it is recommended to configure Max Rows as 5000 or less. Use extract mode for more than 5000 records.",
+                extractModeMessageSandbox: "For Sandbox sites, it will extract only 50,000 records. Additionally, refresh is not supported.",
+                paginationMessage: "For Sandbox sites, Pagination and refresh are not supported.",
                 useAsWindowCredential: "Use as Window Credential",
                 impersonateAuthenticatedUserAfterConnecting: "Impersonate the authenticated user after connecting.",
                 promptForCredentials: "Prompt for credentials",
@@ -3706,6 +3716,15 @@
                 statisticsLink: "Statistics Links",
                 mentions:"Mentions"
             },
+            viewUnderlyingDataSettings:
+            {
+                dataConfiguration: "View Underlying Data Configuration",
+                    cancelButtonText: "Cancel",
+                        okButtonText: "Apply",
+						multiselectText: "Hold CTRL to select multiple items",
+						enableAll: "Enable all",
+						dragDropText: "Drag and drop the column from the left side panel"
+            },
             almaDataSource: {
                 ping: "Ping",
                 districts: "Districts",
@@ -6214,7 +6233,7 @@
 				emptyDashboard: "The export request cannot be processed because the dashboard is empty and does not contain any configured widgets.",
 				pagewiseOption: "Enable pagewise exporting",
 				pagewiseExportInfo: "If this option is enabled, all data will be exported. As a result, if there is more data, it will take longer to finish the PDF export.",
-				exportLimitation: "{0} export has a default limit of {1} rows. This limit can be modified by the administrator through the config settings.",
+                exportLimitation: "{0} export has a default limit of {1} rows. This limit can be modified by the administrator through the config settings.",
 				exportListingSuccessMsg: "Export was completed successfully. If the download does not begin, please click the button below to download manually."
             },
             maximize: {
