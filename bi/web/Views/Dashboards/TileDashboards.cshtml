@@ -39,6 +39,8 @@
     var itemsPartialScript = string.Empty;
     var isSharePublishAllowed = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
     var isOracleDB = _globalAppSettings.DBSupport == DatabaseType.Oracle;
+    var isDataSourceCreateDenied = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
+    var dataSourceCreateLimitCount = !ServerAppConfig.IsSelfHosted && !string.IsNullOrWhiteSpace(ServerAppConfig.AppSettings.DataSourceCreateLimitCount) ? ServerAppConfig.AppSettings.DataSourceCreateLimitCount : string.Empty;
 }
 
 <environment include="Development,CloudDevelopment">
@@ -126,6 +128,7 @@
         var uploadDashboardStatusUrl = "@Url.Action("UploadDashboardStatus", "Dashboards")";
         var editDashboardEmbedUrl = "@Url.Action("DashboardDesigner", "Designer")";
         var checkCategoriesExistUrl = "@Url.Action("CheckCategoriesExist", "Dashboards")";
+        var validateDataSourceCountUrl = "@Url.Action("ValidateDataSourceCreateLimit", "Items")";
         var currentUserId = @currentUserId;
         var isMaster = @Json.Serialize(globalAppSettings.SystemSettings.IsMaster);
         var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
@@ -161,6 +164,8 @@
         var canCreateCategory = @Json.Serialize(canCreateCategory);
         var hacCreateDataSourcePermission = "@hacCreateDataSourcePermission"
         var copyItemType = "@Convert.ToInt32(ItemType.Dashboard)";
+        var isDataSourceCreateDenied = @Json.Serialize(isDataSourceCreateDenied);
+        var dataSourceCreateLimitCount = "@dataSourceCreateLimitCount";
     </script>
     @if (samePagePreview && !isMobile)
     {
