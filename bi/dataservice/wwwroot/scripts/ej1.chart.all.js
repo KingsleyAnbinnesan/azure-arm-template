@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.chart.all.js
-*  version : 7.11.17
+*  version : 7.11.18
 *  Copyright Syncfusion Inc. 2001 - 2024. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -18004,9 +18004,9 @@ BoldBIDashboard.ejTMA = ejExtendClass(BoldBIDashboard.EjIndicatorRender, {
 			          x += pointWidth / 2;
 		  	} else {
 		  	    if ((point.y >= 0 && !series.yAxis.isInversed) || (point.y < 0 && series.yAxis.isInversed))
-                      x = anchor == "middle" ? (x + (type == "bar" ? textOffset.width : -textOffset.width)) : (anchor == "start" ? (x + textOffset.width/2 + lineHeight) : (x + lineHeight)) ;
+                       x += textOffset.width / 4 + lineHeight;
                 else
-                      x = anchor == "middle" ? (x - textOffset.width / 4 + lineHeight) : (anchor == "start" ? (x - textOffset.width / 2 + lineHeight) : (x + lineHeight));
+                      x -= textOffset.width / 4 + lineHeight;
            }
 			}
 			else
@@ -23153,6 +23153,7 @@ var Gradient = function (colors) {
 		  for (i = 0; i < visibleSeriesLength; i++) {
 	        currentSeries = this.model.series[i];
 			anchor = currentSeries.marker.dataLabel.textAnchor.toLowerCase();
+            compareColumnLabels = currentSeries.marker.dataLabel.showColumnLabels;
 		   if (currentSeries.visibility != "hidden"){
 	        points = currentSeries._visiblePoints;
 	        if (currentSeries._enableSmartLabels && this.model.AreaType == "cartesianaxes" && !BoldBIDashboard.util.isNullOrUndefined(points)) {
@@ -23160,7 +23161,8 @@ var Gradient = function (colors) {
 			   if (currentSeriesType == "column" || currentSeriesType == "stackingcolumn" ||
                    currentSeriesType == "bar" || currentSeriesType == "stackingbar" || currentSeriesType == "stackingbar100" || currentSeriesType == "stackingcolumn100" || currentSeriesType == "rangecolumn") {
 			       this.cartesianColumnSmartLabels(currentSeries, points, i);
-			       this.compareColumnDataLabelsRegion();
+                   if(!compareColumnLabels)
+			        this.compareColumnDataLabelsRegion();
 			   }
 			   else {
 			       this.cartesianSmartLabels(currentSeries, points, i);
@@ -23171,7 +23173,7 @@ var Gradient = function (colors) {
 						beforeWidth = (anchor == "middle") ? (currentPoint.width/2) : (anchor == "end" ? currentPoint.width : 2);
 					    if ((currentPoint.xPos - beforeWidth < 0) || (currentPoint.xPos + pointWidth > areaBounds.Width)||
 						     (currentPoint.yPos + currentPoint.height/2 > areaBounds.Height)||(currentPoint.yPos - currentPoint.height/2 < 0))
-							 currentPoint.hide = true;
+							 currentPoint.hide = compareColumnLabels ? false :true;
 		            }
 			}
 		  }
@@ -24637,6 +24639,7 @@ var Gradient = function (colors) {
 
 	compareColumnDataLabels: function (currentSeries, i, points, count, processCount) {
 	    var length = this.model.allPoints.length - 1;
+        var areaBounds = this.model.m_AreaBounds;
 		var prevLabel, currentLabel, padding;
 		var type = currentSeries.type.toLowerCase();
 	    for (var j = 0; j < length; j++) {
@@ -24647,7 +24650,25 @@ var Gradient = function (colors) {
 	        collide = this.isCollide(prevLabel, currentLabel);
 	        textPosition = currentSeries.marker.dataLabel.textPosition;
 	        if (collide.state) {  
-			   currentLabel.hide = true;
+                if (type == "column" || type == "stackingcolumn" || type == "rangecolumn" || type == "waterfall") {
+                    if (textPosition == "top" || textPosition == "middle")
+                        currentLabel.textOptions.y = currentLabel.yPos = currentLabel.yPos + collide.height + padding;
+                    else
+                        currentLabel.textOptions.y = currentLabel.yPos = currentLabel.yPos - collide.height - padding;
+                    currentLabel.textOptions.y = currentLabel.textOptions.y + padding + currentLabel.margin.top / 2 - currentLabel.margin.bottom / 2;
+				    if(currentLabel.textOptions.y > areaBounds.Height){
+					    currentLabel.hide = true;
+					    break;
+				    }
+                }
+                else {
+                    // for horizontal orientation series types
+                    if (textPosition == "top" || textPosition == "middle")
+                        currentLabel.textOptions.x = currentLabel.xPos = prevLabel.xPos - prevLabel.width / 2 - currentLabel.width / 2 - padding;
+                    else
+                        currentLabel.textOptions.x = currentLabel.xPos = prevLabel.xPos + prevLabel.width / 2 + currentLabel.width / 2 + padding;
+                }
+                this.compareColumnDataLabels(currentSeries, i, points, count, this.processCount);  // to call recursive
 	        }
 	    }
 	},
@@ -36112,6 +36133,8 @@ bbdesigner$.uaMatch = function (ua) {
 
                         dataLabel: {
 
+                            showColumnLabels: false,
+
                             isReversed: false,
 
                             visible: false,
@@ -36536,6 +36559,8 @@ bbdesigner$.uaMatch = function (ua) {
 
                     dataLabel:
                     {
+                        showColumnLabels: false,
+                        
                         isReversed: false,
 
                         visible: false,
