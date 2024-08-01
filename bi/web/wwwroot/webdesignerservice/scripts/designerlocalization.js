@@ -494,6 +494,7 @@ var Designer = {
                     pageSize:"Page Size",
                     chartSize:"Chart Size",
                     valueLabelRotation: "Value Label Rotation",
+                    ValueLabelOverflowMode: "Value Label Overflow Mode",
                     valueLabelPosition: "Value Label Position",
                     dataLabel: "Data Label",
                     valueLabelSuffix: "Value Label Suffix",
@@ -7803,7 +7804,10 @@ var Designer = {
 				paddingLeft: "Padding Left",
 				title: "Title",
 				height: "Height",
-				width: "Width"
+				width: "Width",
+                fill: "Fill",
+                enableBackgroundColor: "Enable Background Color",
+                enableBackgroundImage: "Enable Background Image"
             },
             exportListing: {
                 title: "Export",
