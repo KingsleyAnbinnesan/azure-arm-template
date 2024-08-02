@@ -6,6 +6,9 @@ function proceedAutoDeployment(result) {
     $.ajax({
         url: setSystemSettingsUrl,
         type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
+        },
         async: false,
         data: {
             systemSettingsData: result.systemSettingsData,

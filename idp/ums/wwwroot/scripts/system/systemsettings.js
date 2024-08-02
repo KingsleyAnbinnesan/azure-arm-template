@@ -503,6 +503,9 @@ function checkingExistingDB(element) {
    
     $.ajax({
         type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
+        },
         url: connectDatabaseUrl,
         async: false,
         data: {
@@ -665,6 +668,9 @@ function connectDatabase(element, actionType) {
 
     $.ajax({
         type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
+        },
         url: connectDatabaseUrl,
         async: false,
         data: {
@@ -751,7 +757,9 @@ function postSystemSettingsData(systemSettingsDetails, azuredetails, userName, t
     var userIdValue = (userId != undefined && userId !=null) ? JSON.stringify(userId) : null;
     setSystemSettingsData = { systemSettingsData: JSON.stringify(systemSettingsDetails), azureData: JSON.stringify(azuredetails), userName: userNameData, tenantDetails: tenantDetailsData, brandingType: brandingType, userIds: userIdValue, globalSettingsOptions: globalSettingsValues };
     $.ajax({
-        type: "POST", url: setSystemSettingsUrl, data: setSystemSettingsData,
+        type: "POST", headers: {
+            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
+        }, url: setSystemSettingsUrl, data: setSystemSettingsData,
         success: function (setSystemSettingsResponse) {
             if (isAddFromServer != undefined && isAddFromServer) {
                 parent.hideWaitingPopup('add-tenant-popup');
