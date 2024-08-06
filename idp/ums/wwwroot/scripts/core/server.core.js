@@ -617,9 +617,6 @@ function doAjaxPost(type, url, data, onSuccess, onError, onComplete, element, pr
     if (contentType === undefined || contentType === null) contentType = "application/x-www-form-urlencoded; charset=UTF-8";
     $.ajax({
         type: type,
-        headers: {
-            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
-        },
         url: url,
         context: this,
         processData: processData,

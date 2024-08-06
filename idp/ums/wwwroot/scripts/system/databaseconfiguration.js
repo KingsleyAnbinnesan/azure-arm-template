@@ -536,9 +536,6 @@ function registerApplication(isSimpleMode) {
     var tenantInfo = $("#tenant-info").val();
     $.ajax({
         url: setSystemSettingsUrl,
-        headers: {
-            "X-CSRF-TOKEN": document.cookie.split("; ").find(row => row.startsWith("XSRF-TOKEN=")).split("=")[1]
-        },
         type: "POST",
         data: {
             systemSettingsData: systemSettingsData,
