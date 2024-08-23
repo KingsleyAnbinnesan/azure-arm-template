@@ -1510,6 +1510,7 @@
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
       "wwwroot/Scripts/Administration/SystemSettings.js",
+      "wwwroot/Scripts/Administration/addrules.js",
       "wwwroot/Scripts/Password/ShowHidePassword.js",
       "wwwroot/Scripts/User/UserImportDatabase.js",
       "wwwroot/Scripts/Editor/easymde.min.js",
