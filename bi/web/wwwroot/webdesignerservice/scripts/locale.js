@@ -251,6 +251,8 @@
                 widgetName: "Name",
                 subHeaderText: "Subtitle",
                 descriptionText: "Description",
+				widgetTypeText: "Widget Type",
+				uniqueNameText: "Unique Name",
                 containerAppearanceText: "Container Appearance",
                 containerActionsText: "Container Actions",
                 exportName: "Export Settings",
@@ -296,7 +298,8 @@
                 kpiValueText: "KPI Value",
 				noDataContainerText: "No Data Appearance",
 				summaryRowText: "Summary Row",
-				customizeBtnText: "Customize",
+                customizeBtnText: "Customize",
+                configureButton: "Configure",
 				changeButtonText: "Change",
 				persistenceNotificationsText: "Maintains the expanded and collapsed state of the nodes",
                 performanceDelayNotificationsText: "Enabling this property will disable virtualization in the Pivot grid, which can cause performance delays when working with large sets of records",
@@ -416,7 +419,12 @@
 						autoPadding: "Auto Padding",
 						paddingText: "Padding"
 					},
-					showShadowText: "Show Shadow"
+					showShadowText: "Show Shadow",
+					enableWidgetTransparency: "Enable Widget Transparency",
+                    enableBackgroundColor: "Enable Background Color",
+                    enableBackgroundImage: "Enable Background Image",
+                    foregroundColor: "Foreground Color",
+                    enableForegroundColor: "Enable Foreground Color"
                 },
                 containerActions: {
                     showMaximizeText: "Allow Maximize View",
@@ -426,7 +434,9 @@
                     pinWidgetText: "Pin Widget",
                     actionText: "Actions",
                     allowExportingText: "Allow Exporting",
-					showHeaderText: "Show Header"
+					showHeaderText: "Show Header",
+                    canvasStyle: "Canvas Style",
+                    bannerPanelStyle: "Banner Panel Style"
                 },
                 exportSettings: {
                     csvExportText: "Allow CSV Export",
@@ -443,10 +453,13 @@
 					allowAccessVia: "Access via",
 					accessViaWidgetTitle: "Widget Header",
 					accessViaWidgetSelection: "Widget Selection",
-					accessViaBoth: "Both Widget Header & Selection"
+                    accessViaBoth: "Both Widget Header & Selection",
+                    viewDataCustomize: "Custom"
                 },
                 basicSettings: {
                     allowSortingText: "Allow Sorting",
+                    allowResizingText: "Allow Resizing",
+					allowResizingInfo: "Resizing will not take place when the width is set in Column Alignment",
                     allowResizeToFit: "Fit To Content",
                     valuesInRow: "Show Values In Row",
                     horizontalGridLine: "Horizontal Grid Lines",
@@ -481,6 +494,7 @@
                     pageSize:"Page Size",
                     chartSize:"Chart Size",
                     valueLabelRotation: "Value Label Rotation",
+                    ValueLabelOverflowMode: "Value Label Overflow Mode",
                     valueLabelPosition: "Value Label Position",
                     dataLabel: "Data Label",
                     valueLabelSuffix: "Value Label Suffix",
@@ -495,6 +509,8 @@
                     rangeSelection: "Range Selection",
                     orientation: "Orientation",
                     range: "Range",
+					chooseDefault: "Select Today as Default",
+					defaultDateInfo: "Selecting this option will automatically set today's date as the default value for the Date Picker widget. This is useful for filtering the dashboard based on the current day. Once enabled, you won't be able to choose another date as the default selection.",
                     limitDates: "Limit Dates",
                     highlightAvailableDates: "Highlight Available Dates",
                     showLatestDate: "Show Latest Date",
@@ -563,7 +579,8 @@
 					activeTabText: "Active  Tab",
                     apiType:"API Type",
                     listBoxShowAll:"Show All",
-                    tabLoaderText: "Enable Tab loader"
+                    tabLoaderText: "Enable Tab loader",
+                    mapValueType: "Value Type"
                 },
                 tooltipSettings: {
                     showTooltip: "Show Tooltip",
@@ -674,7 +691,7 @@
                 },
                 seriesPaletteSettings: {
                     useDefaultPalette: "Use Default Palette",
-                    advancedSetting: "Advanced Setting",
+                    advancedSetting: "Advanced Settings",
 					colorMappingTypeText: "Color Mapping Type"
                 },
 				kpiBasicSettings: {
@@ -703,7 +720,7 @@
                     colorSettings: {
                         valueLabelText: "Value",
                         barlabelText: "Bar",
-                        advancedSettingText: "Advanced Setting"
+                        advancedSettingText: "Advanced Settings"
                     }
                 },
                 sparkLineSettings: {
@@ -906,7 +923,9 @@
                     showDefaultIcon: "Show Default Image",
                     text: "Text",
                     textColor: "Text Color",
-                    transparency: "Transparency"
+                    transparency: "Transparency",
+					showNoDataHeader: "Show Header",
+					showHeaderInfo: "This option allows the header to be shown in cases where no data is available for display."
 				},
 				interWidgetLinking:{
 					defaultInterWidgetLinking: "Configure how linking should behave with the tab widget. When default action is configured, the tab will be switched based on the index values in the current widget. This gives you the flexibility to switch between the tabs based on the value selected in the current widget. Custom action allows you to switch to a specific tab index so that any value selected in the current widget will switch the tab to the configured tab."
@@ -960,8 +979,8 @@
 				dataCacheFileSystem: "Files System",
 				dataCacheMemoryMode: "Cache Modes",
 				clearCacheButtonText: "Clear",
-				redisServeErrorContent: "Configured redis cache server is not reachable. Please ensure that the redis server is properly running or else change the cache mode to inmemory in BoldServices\\bi\\dataservice\\appsettings.json",
-				redisServeErrorContentOnpremise: "Configured redis cache server is not reachable. Please ensure that the redis server is properly running or else change the cache mode to inmemory in Data Process setting",
+				redisServeErrorContent: "Configured Redis cache server is not reachable. Please ensure that the Redis server is properly running or change the cache mode to in-memory in BoldServices\\bi\\dataservice\\appsettings.json.",
+				redisServeErrorContentOnpremise: "Configured Redis cache server is not reachable. Please ensure that the Redis server is properly running or change the cache mode to in-memory in Data Process settings",
 				redisServeErrorTitle: "Redis Server Error",
 				dataCacheModeText: "Cache Mode",
 				dataCacheFlushDBError: "Data not removed or data is empty.",
@@ -1083,7 +1102,7 @@
                 basicText: "Basic HTTP Authentication",
 				sqlaccess: "Elasticsearch SQL",
                 opendistro :"Open Distro",
-                opendistromessage: "To connect to an Amazon Web Service hosted Elasticsearch instance, please use the Open Distro Connection Type.",
+                opendistromessage: "To connect to an Amazon Web Services-hosted Elasticsearch instance, please use the Open Distro connection type.",
 				elasticsearchTypeText :"Connection Type",
                 authenticationText: "Authentication Type",
                 refreshSettingsText: "Refresh Settings",
@@ -1138,19 +1157,21 @@
                 live: "Live",
                 extract: "Extract",
                 fileSelectionInfo: "Please select a file",
-                x509authenticationInfo: "x.509 certificate authentication requires a secure TLS/SSL connection.",
+                x509authenticationInfo: "X.509 certificate authentication necessitates a secure TLS/SSL connection.",
                 fileUploadCompleted: "Upload completed.",
-                extractModeMessage: "Initially, data will be extracted based on the Max Rows selected in order to proceed with data model creation. The remaining records (there is no limit) will be extracted during the next refresh.",
+                extractModeMessage: "Initially, data extraction will be based on the Max Rows selected to proceed with data model creation. The remaining records, with no limit, will be extracted during the next refresh.",
                 extractModeMessageMongoDB: "Initially it will extract {0} records. Remaining records will be extracted based on configured refresh settings.",
                 extractModeMessageSqlite: "It will extract {0} records only.",
-                liveWebModeMessage: "For optimum performance in live mode Web API, it is recommended to configure Max Rows as 5000 or less. Use extract mode for more than 5000 records.",
+                liveWebModeMessage: "For optimum performance in live mode Web API, it is recommended to configure Max Rows as 5000 or less. For more than 5000 records, use the extract mode.",
+                extractModeMessageSandbox: "For Sandbox sites, it will extract only 50,000 records. Additionally, refresh is not supported.",
+                paginationMessage: "For Sandbox sites, Pagination and refresh are not supported.",
                 useAsWindowCredential: "Use as Window Credential",
                 impersonateAuthenticatedUserAfterConnecting: "Impersonate the authenticated user after connecting.",
                 promptForCredentials: "Prompt for credentials",
                 enterPromptText: "Enter prompt text",
                 doNotUseCredentials: "Do not use credentials",
-				dataSamplingMessage: "Data sampling will provide a better designing experience when creating dashboards with millions of data. It has no effect on the dashboard preview.",
-                dataSampleContextMenu: "Data sampling is enabled, so while designing dashboards with this data source, values may be inaccurate. For accurate values, please click and preview the dashboard.",
+				dataSamplingMessage: "Data sampling will provide a better design experience when creating dashboards with millions of data. It has no effect on the dashboard preview.",
+                dataSampleContextMenu: "Data sampling is enabled. While designing dashboards with this data source, values may be inaccurate. For accurate values, please preview the dashboard.",
 				thresHoldMessage:"Threshold is enabled , It is limit usage of code view mode data for better performance. It will affect the dashboards.",
                 editContextMenu: "Edit",
                 deleteContextMenu: "Remove",
@@ -1169,9 +1190,9 @@
                 welcomeContent: "Start by creating a data source",
                 welcomeBodyContent: "You can connect to your own custom data source or choose one from the predefined sample data sources that we offer.",
                 sampleDataSources: "sample data sources",
-                sampleDataSourceContent: "Kickstart your first dashboard and explore the customization options using the sample data sources.",
+                sampleDataSourceContent: "Kickstart your first dashboard and explore customization options using the sample data sources.",
                 exploreSamples: "explore samples",
-                alertboxHeaderEditConnectionText: "Edit Connection",
+		alertboxHeaderEditConnectionText: "Edit Connection",
                 dialogTitletext: "Users in",
                 datasourceDescriptionWaterMarkTxt: "Write description about this data source",
                 datasourceDescriptionLabelTxt: "Description (Optional)",
@@ -1184,7 +1205,7 @@
                 snowFlakeTooltip: "Example : accountname.region.snowflakecomputing.com",
                 upgrade: "Upgrade",
                 delDescText: "Delete Description",
-                customerConfirmation: "Customer acknowledges and agrees that by asking Syncfusion to connect to this data source (comprising data, storage systems, environment and other constituent systems) on behalf of Customer, Customer certifies that it has adequate rights and licenses from the owners of the data source to allow Customer and Syncfusion on behalf of the Customer to connect to, and use, the data source. Customer agrees to fully indemnify Syncfusion for any and all claims and fees. If Customer does not agree, then Customer should not request that Syncfusion connect to the data source.",
+                customerConfirmation: "By requesting Syncfusion to connect to this data source (including data, storage systems, environment, and other constituent systems) on behalf of the Customer, the Customer acknowledges and agrees that it possesses adequate rights and licenses from the owners of the data source to authorize Customer and Syncfusion, on behalf of the Customer, to connect to and use the data source. Customer agrees to fully indemnify Syncfusion for any and all claims and fees. If Customer does not agree, then Customer should refrain from requesting Syncfusion to connect to the data source.",
                 filePath: "File Path",
                 passwordOptional: "Password (Optional)",
                 dynamicEmbed: "Embedding",
@@ -1194,7 +1215,7 @@
                 dynamicUserIdentity: "User Identity",
                 dynamicFullName: "Full Name",
                 dynamicEmail: "Email",
-                dynamicModeInfo: "Configure the mode in which the Dynamic Connection String should function. The Dynamic Connection can be restricted to the embedded application or within the server or both. Also, configure the identity type to be passed to the custom API. ",
+                dynamicModeInfo: "Configure the mode in which the Dynamic Connection String should function. The Dynamic Connection can be restricted to the embedded application, within the server, or both. Additionally, configure the identity type to be passed to the custom API.",
                 dynamicLearnMore: "Learn more",
                 externalAPI: "External API",
                 customAttribute: "Custom Attribute",
@@ -1204,10 +1225,10 @@
                 odbcTypeText: "ODBC Connection Type",
                 customAttributeCheck: "Custom Attribute cannot be empty.",
                 serverinfolink: "link.",
-                servernametooltipinfo: "To allow the database server to create the data source, white list the IP addresses of Bold BI cloud servers from this ",
+                servernametooltipinfo: "To allow the database server to create the data source, whitelist the IP addresses of Bold BI cloud servers",
 				impersonateInfo: "While using Windows AD login in Bold BI you can impersonate the logged-in user while processing the data from ",
 				enableImpersonate: "Impersonate User",
-				emptyCollection: "No collections in the currently selected DB",
+				emptyCollection: "There are no collections in the currently selected database.",
                 invalidSheetsNoteTxt: "Ignore invalid data sheets and continue data extraction by clicking ‘Yes’.",
                 continueButtonText: "Yes",
                 closeBtnText: "No",
@@ -1272,7 +1293,7 @@
                         templates: {
                             projects: {
                                 name: "Projects",
-                                desc: "Gets all projects visible to the currently logged-in user. If user credentials are not provided, it only returns public projects. To view more information, use the following keys: issueTypes, lead, and projectKeys."
+                                desc: "This function retrieves all projects visible to the currently logged-in user. If user credentials are not provided, it only returns public projects. For more information, refer to the following keys: issueTypes, lead, and projectKeys."
                             },
                             boards: {
                                 name: "Boards",
@@ -1413,8 +1434,8 @@
 							}
                         ]
                     },
-                    fusebill: {
-                        name: "Fusebill",
+                    staxbill: {
+                        name: "Staxbill",
                         templates: [
                             {
 								projects: {
@@ -2337,9 +2358,11 @@
                 dsnNotAvailable: "DSN is not available",
                 dsnDriversNotAvailable: "DSN Drivers are not available",
                 saveExpression: "Expression is not saved. Do you want to save and continue?",
-				unnestExresssion: "UNNEST restricted in the expression",
-				countDistinctExpression: "COUNT(DISTINCT()) restricted in the Expression. Instead, use COUNTD().",
+		unnestExresssion: "UNNEST restricted in the expression",
+		filterWhereExpression: "Filter where the keyword is restricted in the expression",
+		countDistinctExpression: "COUNT(DISTINCT()) restricted in the Expression. Instead, use COUNTD().",
                 invalidExpSyntax: "Incorrect Syntax near Open/Close bracket(s).",
+				arrayTypeExpression: "Array type expressions are restricted in the expression.",
                 saveParameter: "The parameter is not saved. Do you want to save and continue?",
                 InValidParameter: "Data type mismatched. Please select a valid data type parameter.",
                 failedToParseExp: "DashboardDesigner failed to parse the specified expression",
@@ -2357,7 +2380,7 @@
                 listValueNotValid: "Invalid date.",
                 includeListValues: "At least one value is required.",
                 expNotInColumn: "Column cannot be referred within its own expression!",
-                joinerErr: "Each relation must have one field condition. So, does not allow to delete this field.",
+                joinerErr: "Each relation must have one field condition, so it does not allow deletion of this field.",
                 columnNameExist: "The specified column name already exists",
                 columnHasSpecialChar: "Column name should not contain special characters.",
                 columnName: "Column name cannot be empty.",
@@ -2501,6 +2524,7 @@
                 missedFeaturesErr: "Some features used in the dashboard are currently not supported by the web designer.",
                 serverLoginErr: "ReportServer failed to login with specified credentials.",
                 failedToOpenDashboard: "Dashboard Designer failed to open the dashboard.",
+				invalidWidgetId: "The widget item details not found.",
                 notSupportedDashboard: "This version of Dashboard is not supported by Web Designer.",
                 failedToCreateDataSet: "DashboardDesigner failed to create a shared Data Source.",
                 errorOnSaveDashboard: "An error occured while trying to save the Dashboard.",
@@ -2508,7 +2532,7 @@
                 failedToPreviewTable: "Data Source failed to preview the selected table",
                 failedToSaveSelectedTableQuery: "Data Source failed to save the Query of selected table.",
                 failedToGetQuerySchema: "Data Source failed to retrieve the Query Schema of selected table.",
-                mapFileDownloadingError: "The map shape file is not loaded due to network problems. To fix this problem, try to reload the page.",
+                mapFileDownloadingError: "The map shape file failed to load due to network problems. To fix this issue, try reloading the page.",
                 shapeDataInfo: "Shape Data Unavailable",
                 mapFileLoadingError: "The selected shape is not available, and you cannot see the next level.",
                 alertAddDatasourceMessage: "You have not configured a data source yet.<br>Add a data source to bind data to widgets in your dashboard.",
@@ -2520,7 +2544,7 @@
                 invalidDesignerMode: "The Mode API has an invalid value",
                 serviceURLEmpty: "The dashboard service url cannot be empty",
                 dataSourcesRemoved: "Some data source(s) used in the dashboard are no longer available in the server.",
-                widgetDataUpdateFailed: "A problem occurred while formatting or customizing the data of this widget. This issue may have occurred if this type of data is not handled at the widget level.",
+                widgetDataUpdateFailed: "An issue occurred while formatting or customizing the data for this widget. This problem may have arisen if this type of data is not supported at the widget level.",
                 widgetCustomizeFailed: "A problem occurred while customizing data for widget.",
                 serverConnectionError: "An error occurred while connecting to the server",
                 dataRetrievalError: "Data Retrieval Error",
@@ -2535,7 +2559,7 @@
                 invalidCustomAttributeError: "Custom attribute is not valid.",
 				exportFail: "Exporting failed",
 				exportFailedContent: "Your export request has failed.",
-                exportRestrictContent: "An export request with similar settings is already in progress. Please wait until it completed.",
+                exportRestrictContent: "An export request with similar settings is already in progress. Please wait until it is completed.",
                 dialogmsgETL:"We recommend utilizing the Bold ETL to manage data source operations. To initiate this process, click on the 'Redirect to Bold ETL' button.",
                 etlDialogHeaderText: "Redirect to Bold ETL",
                 etlContinuebtnText: "Continue with connector"
@@ -2633,7 +2657,7 @@
                 selectTableLeftVal: "Select the left table value",
                 selectTableRytVal: "Select the right table value",
                 selectRelationTable: "Select the relation for tables",
-                relationExistsInTable: "Already relation exists between tables",
+                relationExistsInTable: "A relation already exists between the tables.",
                 waitingPopupText: "Importing data. This may take some time depending on the size of the data.",
                 reloadButtonText: "Reload",
 				previewButtonText: "Preview",
@@ -2677,9 +2701,10 @@
                 fiscalYearChangeValidationMsg: "Changing the Fiscal Year will invalidate filters and sorting applied on this column.",
                 tableRemoveMessage: "Removing this table will affect the filter/parameters/expression columns referring to it. Do you still want to continue?",
                 createCategoryMessage: "*Please create a category to save the dashboard",
-                differentSchema: "The new schema is different from the existing one. If you click 'Yes,' you lose the previous widget and data, and the new connection table data will be displayed. If you click 'No,' the data source will be reconnected with new credentials, and the widget data will depend on the availability of the table and fields in the target connection. Otherwise, click on the 'x' icon to close the popup without taking any action.",
+                differentSchema: "The new schema is different from the existing one. If you click 'Yes,' you will lose the previous widget and data, and the new connection table data will be displayed. If you click 'No,' the data source will be reconnected with new credentials, and the widget data will depend on the availability of the table and fields in the target connection. Alternatively, click the 'x' icon to close the popup without taking any action.",
                 columnNotExist: "Some columns do not exist in the new schema, and this affects the dashboard. Would you like to proceed with the schema changes?",
 				dataTypeMismatch: "Changing the data type may result in data loss and this affects the dashboard. Do you want to continue?",
+				invalidSchemaAlertMessage: 'Invalid Fields in Expression - There is an invalid expression in the data source. Please click the \'RUN\' button to resolve the invalid expression. If you click \'YES\', the data source will be saved with the invalid expression. If you choose \'NO\', the Query Designer page will remain open until the expression is resolved.',
                 doYouWant: "will be deleted. Do you want to continue",
                 tableremove: "Some associated tables will be dropped from the data source.",
                 tableList: "The list of tables to be dropped ",
@@ -2721,8 +2746,9 @@
 				joinMessageAzureDataExplorer: "Azure Data Explorer does not support the CROSS JOIN",
 				joinMessagePostgreSql: "PostgreSQL does not support the not equal, less than or equal to, or greater than or equal to operators for the FULL OUTER JOIN.",
 				joinMessageRockset: "Rockset does not support the FULL OUTER JOIN",
-                combineDsWithCustomQueryAlertMessage: "The combine data sources feature did not support data sources in code view mode.",
-                firstAndLastMessage: "The First and Last option is not supported for aggregate expressions."
+        combineDsWithCustomQueryAlertMessage: "The append data sources feature does not support data sources in code view mode.",
+        firstAndLastMessage: "The First and Last option is not supported for aggregate expressions.",
+				relativeDateFilterValidationMessage: "Please choose or enter a valid date. The date value cannot be empty."
             },
             parameterMessages: {
                 nameHasSpecialChar: "Name should not contain spaces and special characters",
@@ -2755,7 +2781,7 @@
                 queryParameter: "Query Parameter",
                 StoredProcedure: "Stored Procedure Parameter",
                 queryJoiner: "Query Joiner",
-                dashboardDesigner: "Dashboard Designer",
+                dashboardDesigner: "Dashboard",
                 relativeDateOptions: "Add Relative Date Range",
                 loginWindow: "Login Window",
                 dataSourceAdvancePanel: "Data Source AdvancePanel",
@@ -2807,7 +2833,8 @@
                 JoinAlert: "Join Alert",
                 relativeDatesAlert: "Relative Dates Alert",
                 fileNotFound: "File Not Found",
-                firstAndLast: "Aggregate expressions not supported"
+                firstAndLast: "Aggregate expressions not supported",
+				relativeDateFilterLinkToSpecificDateAlert: "Link To Specific Date"
             },
             linkedAccountsWindow: {
                 title: "Accounts",
@@ -2897,19 +2924,19 @@
                 refresh: "Refresh"
             },
             mergedDataSource: {
-                title: "Combine Data Source",
+                title: "Append Data Source",
                 nameTitle: "Data source name",
                 descTitle: "Description (Optional)",
                 merge: "Append",
                 dataSourceTitle: "Selected data sources",
                 back: "Back",
-                configureMessage: "Combine Data Source Configuration",
-                cancelMessage: "Do you want to cancel the combine data source configuration?",
+                configureMessage: "Append Data Source Configuration",
+                cancelMessage: "Do you want to cancel the append data source configuration?",
                 headerDescription: "dashboard designer allows you to create a new data source from existing extracted mode data sources by appending all rows with column mapping.",
                 invalidDataSourceName: "Invalid data source name.",
                 progressSelectDataSource: "SELECT DATA SOURCES",
-                progressMerge: "COMBINE",
-                tableAdded: "The table is added into the combined source list successfully.",
+                progressMerge: "APPEND",
+                tableAdded: "The table is added into the appended source list successfully.",
                 addButtonText: "ADD",
                 sourceTable: "Source table",
                 sourceColumn: "Source Column",
@@ -2918,7 +2945,7 @@
                 updateMappingDialogText: "Apply",
                 columnMapping: "Column mapping",
                 closeMappingDialogText: "Cancel",
-				schemaMisMatch:"Selected data source schema information is not matched. Do you want to mapping the columns?"
+				schemaMisMatch:"The selected data source schema information does not match. Do you want to map the columns?"
             },
             sampleDataSource: {
                 title: "Sample Data Sources"
@@ -3694,6 +3721,15 @@
                 statisticsLink: "Statistics Links",
                 mentions:"Mentions"
             },
+            viewUnderlyingDataSettings:
+            {
+                dataConfiguration: "View Underlying Data Configuration",
+                    cancelButtonText: "Cancel",
+                        okButtonText: "Apply",
+						multiselectText: "Hold CTRL to select multiple items",
+						enableAll: "Enable all",
+						dragDropText: "Drag and drop the column from the left side panel"
+            },
             almaDataSource: {
                 ping: "Ping",
                 districts: "Districts",
@@ -4043,6 +4079,7 @@
                 dateRangeDisplayText: "Date Range",
                 isSinceSeqFilterDisplayText:"SinceSeq Filter",
                 enableIncrementalRefreshDisplayText: "Incremental Refresh",
+				errorOrganizationsValidation: "Error occurred while fetching the Organizations",
             },
             asanaWebDataSource: {
                 showAttachment: "Show Attachment",
@@ -5690,7 +5727,7 @@
                 showValueAs: "Show Value As ",
                 sharedTable: {
                     header: "Shared Tables",
-                    info: "The tables listed below are from the data sources that you have permission to access. Any changes to this table done by the owner of the data source will be reflected here.",
+                    info: "The tables listed below are from the data sources that you have permission to access. Any changes to these tables made by the owner of the data source will be reflected here.",
                     error4004: "There are no shared tables.",
                     error4006: "One or more shared tables used in this data source are not accessible. Do you want to continue anyway?",
                     errorDesc4006: "This might be due to one of the following reasons.</br>* You no longer have permission to use the data source.</br>* The data source might be deleted by the owner.",
@@ -5705,6 +5742,7 @@
                 record: "record",
                 tryConnectButton: "Try Again",
                 schemaLoadErrorMsg: "Error occurred while fetching the schema",
+                selectedAllValuesInComboBox: "All",
                 selectedMultipleValuesInComboBox: "Multiple Values",
                 updateButton: "Update",
                 liveDataPreviewEnableToolTipText: "Enable auto update",
@@ -5955,6 +5993,8 @@
                     runningMinEx: "RUNNINGMIN(aggregate_expression)",
                     runningSumDesc: "Returns Running Sum Values of each Row.",
                     runningSumEx: "RUNNINGSUM(aggregate_expression)",
+					quantileExactDesc: "Exactly computes the quantile of a numeric data sequence.",
+					quantileExactEx: "QUANTILEEXACT(level, expression)"
                 }
             },
             queryJoiner: {
@@ -5975,7 +6015,7 @@
                 incrementalRefreshTextViews: "Identify new/existing rows using unique/constraint key column(s)",
                 noParamsText: "The selected stored procedure doesn\'t have any parameters",
                 nodateErrMsg: "* A primary key and timestamp column is required to configure incremental update.",
-                informationMsg: "If you choose the unique column option existing rows are modified based on the selected columns.",
+                informationMsg: "If you choose the unique column option, existing rows are modified based on the selected columns.",
                 incrementalRefresh: "Incremental Refresh",
                 refreshUniqueColumn: "Include unique column(s)",
                 noDateColumns: "No date columns",
@@ -6073,7 +6113,7 @@
                 flagText: "Flag",
             },
             advancedColorCustomizationLocale: {
-                advanceSettingsTitle: "Conditional Formatting",
+                advanceSettingsTitle: "Advanced Settings",
                 colorType: "Color Type",
                 basedOn: "Based On",
                 summaryType: "Summary Type",
@@ -6140,12 +6180,14 @@
 				bannerRefreshDisplayText: "Clear cache and refresh",
                 backButtonTooltipText: "Back to designer",
                 mobileViewInfoText: "Info",
+				mobileViewExportStatusText:"Export Status",
                 themeText: "Theme",
                 themePreview: "(preview)",
                 themeLight: "Light",
                 themeDark: "Dark",
                 dashboardParameterTooltip: "Dashboard Parameters",
-                enableCommentDisplayText: "Enable Comment"
+                enableCommentDisplayText: "Enable Comment",
+				performanceMetricsPopText:"Metrics"
             },
             filterOverviewPopup: {
                 appliedFilters: "Applied Filters",
@@ -6195,8 +6237,10 @@
                 apiExportErrMsg: "Invalid export parameter (widgetName)",
 				widgetDataNotConfigured: "The export request cannot be processed because the widgets in the dashboard are not configured.",
 				emptyDashboard: "The export request cannot be processed because the dashboard is empty and does not contain any configured widgets.",
-				pagewiseOption: "Only export current view",
-				pagewiseExportInfo: "If this option is disabled, all data will be exported. As a result, if there is more data, it will take longer to finish the PDF export."
+				pagewiseOption: "Enable pagewise exporting",
+				pagewiseExportInfo: "If this option is enabled, all data will be exported. As a result, if there is more data, it will take longer to finish the PDF export.",
+                exportLimitation: "{0} export has a default limit of {1} rows. This limit can be modified by the administrator through the config settings.",
+				exportListingSuccessMsg: "Export was completed successfully. If the download does not begin, please click the button below to download manually."
             },
             maximize: {
                 maximize: "Maximize",
@@ -6313,7 +6357,7 @@
                 oAuthRequired: "OAuth required",
                 help: "Help",
                 enableAll: "Enable All",
-                headerText: "Configure any number of connections for your applicatios by choosing the connectors for below list.",
+                headerText: "Configure any number of connections for your application by choosing the connectors from the list below.",
                 learnMoreText: "LEARN MORE",
                 oAuthHeaderPrefixText: "The data sources marked",
                 oAuthHeaderSuffixText: "require OAuth configuration to be used in the application.",
@@ -6327,7 +6371,8 @@
 				uploadFailed: "Upload Failed.",
 				uploadCompleted: "Upload Completed",
 				initiatingUpload: "Initiating Upload...",
-                dynamicDialog: "Select your flexible data"
+                dynamicDialog: "Select your flexible data",
+                dsTooltipText:"To enable or disable tooltips for the data source description."
             },
             kpiCardImageSettingsReset: {
                 titleText: "Image Settings Reset",
@@ -6494,8 +6539,8 @@
 				done: "Done"
             },
             initialFilter: {
-                dialogTitle: "Query Filters",
-                menuItemText: "Configure Query Filters",
+                dialogTitle: "Data Filters",
+                menuItemText: "Configure Data Filters",
                 tableFilters: "List of Table Filters",
                 addBtnText: "Add"
             },
@@ -6541,7 +6586,7 @@
                 dataSourcesRemovedMsg: "The mapping data source used is no longer available in the server. Please reconfigure the settings.",
                 showDataToUnmappedUserText: "Show all data for unmapped users & groups",
                 clear: "Clear",
-                showDataToUnmappedUserInfoText: "Checking this option will allow all the users and groups that do not have any mapping configured to see all the records in the data source. Unchecking this option will prevent the unmapped users from seeing any record from the data source.",
+                showDataToUnmappedUserInfoText: "Checking this option will allow all users and groups without any mapping configured to see all records in the data source. Unchecking this option will prevent unmapped users from seeing any records from the data source.",
                 mappingDataSource: "Mapping Data Source",
                 waterMarkSelectDataSource: "Select Data Source",
                 previewAsText: "Preview as",
@@ -7764,8 +7809,32 @@
 				paddingLeft: "Padding Left",
 				title: "Title",
 				height: "Height",
-				width: "Width"
-			}
+				width: "Width",
+                fill: "Fill",
+                enableBackgroundColor: "Enable Background Color",
+                enableBackgroundImage: "Enable Background Image"
+            },
+            exportListing: {
+                title: "Export",
+                clear: "Clear",
+                close: "Close",
+                noItems: "There are no items.",
+                exportMessag: "Export {0} from {1}",
+                exportMessagTooltip: "Export {0} from {1}",
+                remove: "Remove",
+                download: "Download"
+            },
+            metricsContainer: {
+                title: "Performance Metrics",
+                close: "Close",
+                dashboardProcess:"Parsing Time",
+                dashboardLayoutRender:"Layout Time",
+                wigdetMetricsConatiner:{
+                    widgetDatafetch:"Data Fetching",
+                    widgetQueryProcess:"- Querying",
+                    widgetClientRender:"Rendering"
+                }
+            }
 		}
     }
 }
