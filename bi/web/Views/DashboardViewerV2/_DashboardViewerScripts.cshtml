@@ -15,6 +15,7 @@
     var customUI = globalAppSettings.SystemSettings.CustomUI;
     var iscustomUIProfile = customUI?.Profiles != null && customUI.Profiles[0].Dashboards != null;
     var isAdmin = _identityResponse.IsAdmin;
+    var samePagePreview = iscustomUIProfile ? customUI.Profiles[0].Dashboards.SamePagePreview : false;
     var hideMenusAndOptions = iscustomUIProfile ? !isAdmin && customUI.Profiles[0].Dashboards.HideMenusAndOptions : false;
     var hideFavorite  = iscustomUIProfile ? hideMenusAndOptions || (!isAdmin && customUI.Profiles[0].Dashboards.HideFavorite) : false;
     var hideGetLink = iscustomUIProfile ? hideMenusAndOptions || (!isAdmin && customUI.Profiles[0].Dashboards.HideGetLink) : false;
@@ -102,7 +103,8 @@ else
     var hideWidgetPin = @Json.Serialize(hideWidgetPin);
     var hideWidgetComment = @Json.Serialize(hideWidgetComment);
     var hideWidgetGetEmbedCode = @Json.Serialize(hideWidgetGetEmbedCode);
-    var hideWidgetFilter = @Json.Serialize(hideWidgetFilter);    
+    var hideWidgetFilter = @Json.Serialize(hideWidgetFilter);
+    var samePagePreview = @Json.Serialize(samePagePreview);
 
     if (isMultiTab) {
         var preloadLink = document.createElement("link");

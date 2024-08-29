@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-Ivytoktne50jl1r/OCMVEUco/ihxfRKfv4qmfWrCEwA022VA9OZSJ0DlSfagFN12"
+    "integrity": "sha384-J4gpZ9RxRH3koCpdJZmchOSjabK1UKNTjHYIRDiIv/zWQMi5djVGyke/mL+GemFn"
   },
   {
     "bundles/js/sites.js": [
@@ -172,7 +172,7 @@
       "wwwroot/scripts/system/licenseselection.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-+HPiPD9/WNcA60b5uaXRvIkjpuVRB09wKYpd8usxIRO2YCc0Efv1GiM21s5mBBOR"
+    "integrity": "sha384-/aMk8ToPRNrQzg+bPNMSWaJ0i8lalVBY+pSY4+nUuCJtWhJgofJb5tCxk8boouOz"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -195,7 +195,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-t/nVgRQdi9T3uj7kz2DD0syYOltINdElq95rVTKqb0Kl7DUIa8os3z9K98ngAf3P"
+    "integrity": "sha384-fR0aYXMnpzwHJXYLxCczjVV57Qo39wHI5g0HuiGBYz2Q6QCom4PmLtY2tqaW4f8H"
   },
   {
     "bundles/js/ej2.js": [

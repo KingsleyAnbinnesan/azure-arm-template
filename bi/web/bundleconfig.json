@@ -3,6 +3,7 @@
     "cdn/css/layout.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
+      "wwwroot/Styles/EssentialJS2/ej2.dropdowntree.min.css",
       "wwwroot/Styles/EssentialJS2/fusion-theme-compatability/ej.theme.css",
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -1956,6 +1957,7 @@
   {
     "cdn/css/schedulerdialog.css": [
       "wwwroot/Styles/scss/pages/Dialogs.css",
+      "wwwroot/Styles/EssentialJS2/ej2.dropdowntree.min.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",

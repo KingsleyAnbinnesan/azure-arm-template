@@ -1163,9 +1163,9 @@
                 extractModeMessageMongoDB: "Initially it will extract {0} records. Remaining records will be extracted based on configured refresh settings.",
                 extractModeMessageSqlite: "It will extract {0} records only.",
                 liveWebModeMessage: "For optimum performance in live mode Web API, it is recommended to configure Max Rows as 5000 or less. For more than 5000 records, use the extract mode.",
-                extractWebModeMessage: "Initially, data from 10 pages of records will be extracted using the web extract mode, and records from 10 URLs will be extracted in iterative mode. The remaining records will be extracted during the refresh process. This does not apply to incremental resources.",
+                extractWebModeMessage: "Initially, 10 pages of records from the URL and 10 URLs will be extracted in iterative mode. The remaining records, up to the Max Rows limit, will be extracted in the next refresh. This process does not apply to incremental endpoints.",
                 extractModeMessageSandbox: "For Sandbox sites, it will extract only 50,000 records. Additionally, refresh is not supported.",
-                paginationMessage: "For Sandbox sites, Pagination and refresh are not supported.",
+                paginationMessage: "For the Sandbox site, data will be extracted from 10 pages using web extract mode and 10 URLs in iterative mode; however, pagination and refresh are not supported.",
                 useAsWindowCredential: "Use as Window Credential",
                 impersonateAuthenticatedUserAfterConnecting: "Impersonate the authenticated user after connecting.",
                 promptForCredentials: "Prompt for credentials",
@@ -2643,6 +2643,18 @@
                 filterKeyExist: "A filter profile with the same name already exists.",
                 widgetsAvailable: "widgets available."
             },
+			translationWindow: {
+				dialogTitle:"Dynamic Language Translator",
+				dropdownPlaceHolder: "Choose Language",	
+				defaultText: " (Default)",
+				cancelText: "Cancel",
+				saveText: "Save",
+				deleteWidgetAlertTitle: "Delete Widget",
+				deleteMsg: "Deleting the widget will remove its associated data from the Dynamic Language Translator window.",
+				closeText:"Close",
+				dropDownWatermarkText: "Select Language",
+				iconLabel: "Localize Dashboard"
+			},
             dataConfigurationPanel: {
                 collapse: "Collapse",
                 expand: "Expand",
@@ -6239,7 +6251,7 @@
 				widgetDataNotConfigured: "The export request cannot be processed because the widgets in the dashboard are not configured.",
 				emptyDashboard: "The export request cannot be processed because the dashboard is empty and does not contain any configured widgets.",
 				pagewiseOption: "Enable pagewise exporting",
-				pagewiseExportInfo: "If this option is enabled, all data will be exported. As a result, if there is more data, it will take longer to finish the PDF export.",
+				pagewiseExportInfo: "If this option is enabled, {0} data will be exported. As a result, if there is more data, it will take longer to finish the PDF export.",
                 exportLimitation: "{0} export has a default limit of {1} rows. This limit can be modified by the administrator through the config settings.",
 				exportListingSuccessMsg: "Export was completed successfully. If the download does not begin, please click the button below to download manually."
             },
