@@ -253,10 +253,6 @@ $(document).ready(function () {
     uploadPoweredLogo.appendTo("#upload-poweredlogo-image");
 
     $.validator.addMethod("isValidUrl", function (value, element) {
-        var regex = /^(https?:\/\/)?(([a-zA-Z0-9.-]+(:[a-zA-Z0-9]*)?@)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|localhost))(:(\d+))?(\/.*)?$/;
-        if (!regex.test(value)) {
-            return false;
-        }
         var givenUrl = getSslValue() + "://" + $("#site_url").val();
         var url = parseURL(givenUrl);
         if (parseInt(url.port) > 65535)
@@ -570,13 +566,25 @@ $(document).ready(function () {
             $("#site-copyright-error").html("");
             $("#site-copyright-error").hide();
             $("#site-copyright").attr("style", "border-color:var(--input-box-border-normal-color) !important");
+            if ($("#site-copyright").val() === '')
+            {
+                document.getElementById("site-copyright").value = copyrightInformation;
+                $("#site-copyright").closest("div").removeClass("has-error");
+            }
         }
         else {
             $("#copyrightinfo").removeClass("hide").show();
             $("#site-copyright").removeAttr('disabled');
             $("#site-copyright-error").show();
-            $("#site-copyright-error").html(window.Server.App.LocalizationContent.CopyRightValidator);
-            $("#site-copyright").attr("style", "border-color:var(--red)!important !important");
+            if ($("#site-copyright").val() === '')
+            {
+                $("#site-copyright-error").html(window.Server.App.LocalizationContent.CopyRightValidator);
+                $("#site-copyright").closest("div").addClass("has-error");
+            }
+            else
+            {
+                $("#site-copyright").closest("div").removeClass("has-error");
+            }
         }
         addFooterSeparator();
     });
@@ -610,7 +618,10 @@ $(document).ready(function () {
     }
 
     $(document).on("click", "#UpdateSystemSettings,#UpdateSystemSettings-bottom,#UpdateDatabaseSettings-bottom,#update-mail-settings", function () {
-        validateIPWhitelisted();
+        if($("#site_url").val().length>0)
+        {
+            validateIPWhitelisted();
+        }
         if (($("#look-and-feel-form").find(".has-error").length == 0 && $("#email-setting-form").find(".has-error").length == 0)) {
            var messageHeader = $(this).hasClass("update-system-settings") ? window.Server.App.LocalizationContent.SiteSettings : window.Server.App.LocalizationContent.EmailSettings;
            var enableSecureMail = $("#secure-mail-authentication").is(":checked");

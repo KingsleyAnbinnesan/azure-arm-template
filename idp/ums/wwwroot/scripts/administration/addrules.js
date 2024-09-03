@@ -24,15 +24,15 @@ $(document).ready(function () {
     }, window.Server.App.LocalizationContent.RuleHasSpecialCharacter);
 
     $.validator.addMethod("isValidRuleName", function (value, element) {
-        return /^[a-zA-Z0-9\s]+$/.test(value);
+        return /^[a-zA-Z0-9\s]+$/.test(value) && !/^\s/.test(value);
     }, window.Server.App.LocalizationContent.RuleHasSpecialCharacter);
 
     $.validator.addMethod("isIPaddressExists", function (value, element) {
-        return !isIPAddressExists(value);
+        return !isIPAddressExists($.trim(value));
     }, window.Server.App.LocalizationContent.IPAddressExists);
 
     $.validator.addMethod("isRuleNameExists", function (value, element) {
-        return !isRuleNameExists(value);
+        return !isRuleNameExists($.trim(value));
     }, window.Server.App.LocalizationContent.RuleNameExists);
     $.validator.addMethod("isValidIPAddress", function (value, element) {
         var ipType = $('input[name="ipaddress-type"]:checked').val();
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 return false;
             }
         } else if (ipType === 'IPv6') {
-            var ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){6}(?::[0-9a-fA-F]{1,4}|:)|(?:[0-9a-fA-F]{1,4}:){5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){2}(?::[0-9a-fA-F]{1,4}){1,5}|(?:[0-9a-fA-F]{1,4}:){1}(?::[0-9a-fA-F]{1,4}){1,6}|(?::[0-9a-fA-F]{1,4}){1,7}|(?:[0-9a-fA-F]{1,4}:){1,7}:(?::[0-9a-fA-F]{1,4}){1,7}$/
+            var ipv6Regex = /^(?:(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}|:(?::[0-9a-fA-F]{1,4}){1,7}|::|(?:[0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])|::(?:ffff(?::0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))(?:%[0-9a-zA-Z]{1,})?$/;
             if (!ipv6Regex.test(value)) {
                 $.validator.messages.isValidIPAddress = window.Server.App.LocalizationContent.InvalidIPV6IPAddress;
                 return false;
@@ -122,10 +122,12 @@ $(document).ready(function () {
         }
     });
     function isIPAddressExists(ipAddress) {
-        if (ipAddress === existsIpAddress) {
-            return false;
+        if(isEditing) {
+            if (ipAddress === existsIpAddress) {
+                return false;
+            }
         }
-        else if (dataSourceRule) {
+        if (dataSourceRule) {
             return dataSourceRule.some(function (rule) {
                 return rule.IPAddress === ipAddress;
             });
@@ -133,15 +135,18 @@ $(document).ready(function () {
         return false;
     }
     function isRuleNameExists(ruleName) {
-        if (ruleName === exisitingRuleName) {
-            return false;
-        }
-        else if (dataSourceRule) {
+        if(isEditing) {
+            if (ruleName === exisitingRuleName) {
+                return false;
+            }
             return dataSourceRule.some(function (rule) {
-                return rule.RuleName.toLowerCase() === ruleName.toLowerCase() ;
+                return rule.RuleName.toString() === ruleName.toString();
+            });
+        }else{
+            return dataSourceRule.some(function (rule) {
+                return rule.RuleName.toLowerCase().toString() === ruleName.toLowerCase().toString();
             });
         }
-        return false;
     }
 
 });

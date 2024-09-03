@@ -1232,3 +1232,9 @@ $(window).on('load', function () {
 $(document).on("click", "#enable-isolation-code-material", function () {
     enableIsolationCode();
 });
+
+$(document).on("mouseleave", 'input[type="text"], input[type="password"]', function() {
+    if ($(this).val() === "") {
+        $(this).closest('div').removeClass("e-valid-input");
+    }
+});

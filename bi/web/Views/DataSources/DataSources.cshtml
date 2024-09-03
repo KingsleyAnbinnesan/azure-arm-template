@@ -136,27 +136,27 @@
                             <span class="su su-search search-item pull-left no-margin" title="@T["Search data sources"]"></span>
                         </div>
                         <div class="col-xs-4 no-padding button-section">
-                            <div id="datasource-create-dropdown" class="col-xs-6 no-padding pull-right">
-                                <button class="dropdown-toggle primary-button app-btn-primary pull-right" data-toggle="dropdown" id="datasource-create" title="@T["New Data Source"]">
-                                    <span class="create-btn-text">@T["New Data Source"] </span>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu multi-level pull-right" role="menu" id="datasource-options">
-                                    @if (itemPermissions[ItemType.Datasource])
-                                    {
-                                        <li>
-                                            <a id="create-datasource-connection" data-toggle="tooltip" data-placement="left" data-container="body">
-                                                <span>@T["Create Data Source"]</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a id="merge-datasource" data-toggle="tooltip" data-placement="left" data-container="body">
-                                                <span>@T["Append Data Source"]</span>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
+                            @if (itemPermissions[ItemType.Datasource])
+                            {
+                                <div id="datasource-create-dropdown" class="col-xs-6 no-padding pull-right">
+                                    <button class="dropdown-toggle primary-button app-btn-primary pull-right" data-toggle="dropdown" id="datasource-create" title="@T["New Data Source"]">
+                                        <span class="create-btn-text">@T["New Data Source"] </span>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu multi-level pull-right" role="menu" id="datasource-options">
+                                            <li>
+                                                <a id="create-datasource-connection" data-toggle="tooltip" data-placement="left" data-container="body">
+                                                    <span>@T["Create Data Source"]</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a id="merge-datasource" data-toggle="tooltip" data-placement="left" data-container="body">
+                                                    <span>@T["Append Data Source"]</span>
+                                                </a>
+                                            </li>
+                                    </ul>
+                                </div> 
+                            }
                             <a href="@Url.Action("ConnectedAccounts", "User")" id="my-connection" class="link-button app-btn-link pull-right connected-accounts-button" title="">@T["My Connections"]</a>
                         </div>
                     </div>

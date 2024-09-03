@@ -329,6 +329,7 @@
     var itemName = "@Context.Request.Query["itemName"].ToString()";
     var scheduleId = "@Context.Request.Query["scheduleId"].ToString()";
     var multiDashboardName = "@Context.Request.Query["multiDashboardName"].ToString()";
+    var categoryId = "@Context.Request.Query["categoryId"].ToString()";
     var isScheduledItemDeleted = @Json.Serialize(Context.Request.Query["isScheduledItemDeleted"].ToString());
     var categoryName = "@Context.Request.Query["categoryName"].ToString()";
     var getDashboardUrl = "@Url.Action("GetItems", "dashboards")";
@@ -381,7 +382,7 @@
         }, 100);
     }
     else {
-        editSchedule(scheduleId, itemId, htmlDecode(itemName), htmlDecode(categoryName), multiDashboardName, isScheduledItemDeleted, isWidgetDeleted, isViewDeleted);
+        editSchedule(scheduleId, itemId, htmlDecode(itemName), htmlDecode(categoryName), multiDashboardName, isScheduledItemDeleted, isWidgetDeleted, isViewDeleted, categoryId);
         setTimeout(function () {
             initializeCategoryDropdown();
         }, 100);

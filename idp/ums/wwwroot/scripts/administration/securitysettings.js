@@ -438,8 +438,8 @@ $(document).on('click', "#restrict-ipwhitelist-enabled", function () {
 
 $(document).on('click', "input#add-rule", function () {
     if (isEditing) {
-        var ruleName = $("#rulename").val();
-        var ipAddress = $("#ipaddress").val();
+        var ruleName = $.trim($("#rulename").val());
+        var ipAddress = $.trim($("#ipaddress").val());
         var iptype = $('input[name="ipaddress-type"]:checked').val();
         var isValid = $("#dialog-container").valid();
         if (isValid) {
@@ -464,8 +464,8 @@ $(document).on('click', "input#add-rule", function () {
     }
     else
     {
-        var ruleName = $("#rulename").val();
-        var ipAddress = $("#ipaddress").val();
+        var ruleName = $.trim($("#rulename").val());
+        var ipAddress = $.trim($("#ipaddress").val());
         var iptype = $('input[name="ipaddress-type"]:checked').val();
         var isValid = $("#dialog-container").valid();
         if (isValid) {
@@ -482,9 +482,11 @@ $(document).on('click', "input#add-rule", function () {
         }
     }
 });
-
+$(document).on('change', 'input[name="ipaddress-type"]', function () {
+    $("#dialog-container").validate().element("#ipaddress");
+});
 $(document).on('click', '.tenant-action[data-action="delete"]', function () {
-    var ruleName = $(this).data('rule-name');
+    var ruleName = $(this).data('rule-name').toString();
     var ipAddress = $(this).data('ipaddress');
     var ipType = $(this).data('ip-type');
     
@@ -498,8 +500,8 @@ $(document).on('click', '.tenant-action[data-action="delete"]', function () {
 });
 
 $(document).on('click', '.tenant-action[data-action="edit"]', function () {
-    isEditing = true; 
-    exisitingRuleName = $(this).data('rule-name');
+    isEditing = true;
+    exisitingRuleName = $(this).data('rule-name').toString();
     existsIpAddress = $(this).data('ipaddress'); 
     var existsIpType = $(this).data('ip-type');
     $('#rules-add-dialog_title').text("Edit Rules");
@@ -765,121 +767,160 @@ $(document).on("keyup", "#frame-anc-content", function (e) {
     }
 });
 $(document).on("paste", "#txt-stylesrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "style-src-chip-content") && value != "") {
-                styleSrcChipData.push(value);
-                srcChipConversion(styleSrcChipData, "style-src-chip-content", "#txt-stylesrc");
+    if ($(this).closest('#style-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else
+    {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "style-src-chip-content") && value != "") {
+                    styleSrcChipData.push(value);
+                    srcChipConversion(styleSrcChipData, "style-src-chip-content", "#txt-stylesrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-stylesrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-stylesrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-scriptsrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "script-src-chip-content") && value != "") {
-                scriptSrcChipData.push(value);
-                srcChipConversion(scriptSrcChipData, "script-src-chip-content", "#txt-scriptsrc");
+    if ($(this).closest('#script-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "script-src-chip-content") && value != "") {
+                    scriptSrcChipData.push(value);
+                    srcChipConversion(scriptSrcChipData, "script-src-chip-content", "#txt-scriptsrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-scriptsrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-scriptsrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-fontsrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "font-src-chip-content") && value != "") {
-                fontSrcChipData.push(value);
-                srcChipConversion(fontSrcChipData, "font-src-chip-content", "#txt-fontsrc");
+    if ($(this).closest('#font-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "font-src-chip-content") && value != "") {
+                    fontSrcChipData.push(value);
+                    srcChipConversion(fontSrcChipData, "font-src-chip-content", "#txt-fontsrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-fontsrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-fontsrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-imgsrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "img-src-chip-content") && value != "") {
-                imgSrcChipData.push(value);
-                srcChipConversion(imgSrcChipData, "img-src-chip-content", "#txt-imgsrc");
+    if ($(this).closest('#img-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else
+    {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "img-src-chip-content") && value != "") {
+                    imgSrcChipData.push(value);
+                    srcChipConversion(imgSrcChipData, "img-src-chip-content", "#txt-imgsrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-imgsrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-imgsrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-connectsrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "connect-src-chip-content") && value != "") {
-                connectSrcChipData.push(value);
-                srcChipConversion(connectSrcChipData, "connect-src-chip-content", "#txt-connectsrc");
+    if ($(this).closest('#connect-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "connect-src-chip-content") && value != "") {
+                    connectSrcChipData.push(value);
+                    srcChipConversion(connectSrcChipData, "connect-src-chip-content", "#txt-connectsrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-connectsrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-connectsrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-framesrc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "frame-src-chip-content") && value != "") {
-                frameSrcChipData.push(value);
-                srcChipConversion(frameSrcChipData, "frame-src-chip-content", "#txt-framesrc");
+    if ($(this).closest('#frame-src-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else
+    {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "frame-src-chip-content") && value != "") {
+                    frameSrcChipData.push(value);
+                    srcChipConversion(frameSrcChipData, "frame-src-chip-content", "#txt-framesrc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-framesrc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-framesrc").val("");
-        }, 100);
     }
 });
 
 $(document).on("paste", "#txt-frameanc", function (e) {
-    var data = e.originalEvent.clipboardData.getData('Text').trim();
-    var content = data.split(/[\s,;\r?\n]+/);
-    if (content.length > 1) {
-        for (var i = 0; i < content.length; i++) {
-            var value = content[i];
-            if (isSrcChipAlreadyExists(value, "frame-anc-chip-content") && value != "") {
-                frameAncChipData.push(value);
-                srcChipConversion(frameAncChipData, "frame-anc-chip-content", "#txt-frameanc");
+    if ($(this).closest('#frame-anc-content').hasClass('src-disabled')) {
+        e.preventDefault();
+    }
+    else
+    {
+        var data = e.originalEvent.clipboardData.getData('Text').trim();
+        var content = data.split(/[\s,;\r\n]+/);
+        if (content.length > 1) {
+            for (var i = 0; i < content.length; i++) {
+                var value = content[i];
+                if (isSrcChipAlreadyExists(value, "frame-anc-chip-content") && value != "") {
+                    frameAncChipData.push(value);
+                    srcChipConversion(frameAncChipData, "frame-anc-chip-content", "#txt-frameanc");
+                }
             }
+            setTimeout(function () {
+                $("#txt-frameanc").val("");
+            }, 100);
         }
-        setTimeout(function () {
-            $("#txt-frameanc").val("");
-        }, 100);
     }
 });
 

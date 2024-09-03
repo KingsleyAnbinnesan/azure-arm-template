@@ -62,6 +62,9 @@
             portnumber: {
                 isRequired: true
             },
+            maintenancedatabase: {
+                isRequired: true
+            },
             username: {
                 required: true,
                 sqlUsernamevalidation: true
@@ -145,6 +148,9 @@
             },
             portnumber: {
                 isRequired: window.Server.App.LocalizationContent.PortValidator
+            },
+            maintenancedatabase: {
+                isRequired: window.Server.App.LocalizationContent.MaintenanceDbValidator
             },
             username: {
                 required: window.Server.App.LocalizationContent.UserNameValidator

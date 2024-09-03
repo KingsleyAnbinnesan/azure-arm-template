@@ -5805,7 +5805,8 @@ body #share-permission-container .btn-default, #people-container .btn-default {
     background-color: var(--drop-down-menu-btn-bg-disable-color);
     border: 1px solid var(--secondary-border-color);
     color: var(--drop-down-menu-btn-text-disable-color);
-    opacity: 1; }
+    opacity: 1;
+    pointer-events: none; }
   .custom-bootstrap-styles .btn-default:focus, .btn-default:focus, .open > .dropdown-toggle.btn-default:focus, .custom-bootstrap-styles .open > .dropdown-toggle.btn-default:focus, .btn-default.selectpicker:focus, .btn-default:active:hover:focus {
     background-color: var(--primary-background-color);
     color: var(--primary-text-normal-color);

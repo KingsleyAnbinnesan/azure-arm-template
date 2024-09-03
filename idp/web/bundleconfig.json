@@ -64,7 +64,7 @@
       "wwwroot/scripts/user/userattributes.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-wz9Ve+pAsEH8Ti8gUP4ooi+ji8nDWifNPim43sdyRo4kWhnQgG1hf/Y9l6vUe9ZG"
+    "integrity": "sha384-vWV1T5+e4K7dh26C8qqUtuSs3sn3/cAYWXh/9/W8daDcu3gGstyzj7x0UgqQ7DR5"
   },
   {
     "bundles/js/user-preference.js": [
