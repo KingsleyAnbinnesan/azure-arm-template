@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-J4gpZ9RxRH3koCpdJZmchOSjabK1UKNTjHYIRDiIv/zWQMi5djVGyke/mL+GemFn"
+    "integrity": "sha384-nnI9SN6By/32UDt8xI1LBpTIJHb6fBWjxFvyniSLsxm/saBGc3Cwressb8KVcvuE"
   },
   {
     "bundles/js/sites.js": [
@@ -195,7 +195,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-7bhoOMSYC3t/Q82/YfP901xsNUpm+EHrJFeeZc3xjlTmiQNTvDrtHbrnKHNgQ/Wv"
+    "integrity": "sha384-iXTrNuaATSXldOccg43dn5qC/MOhVXlfXF17tyPsAlnMiAXiSqVqLWgUDOn2Jgax"
   },
   {
     "bundles/js/ej2.js": [
@@ -234,7 +234,7 @@
       "wwwroot/scripts/administration/look-feel.js",
       "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-GSgosq3wBMlWwxpy0cJZWMlZ1u1wn3IBrxtU/7TwLnr3zu7m2i/E6iwf74bMG4GP"
+    "integrity": "sha384-o6UHdUreyjyaeySIcYmooi9cpd6UZP2zXmqmPUjZyfy0/EYToBnnZwUDRu81m36i"
   },
   {
     "bundles/js/security-settings.js": [
@@ -246,7 +246,7 @@
       "wwwroot/scripts/administration/addrules.js",
       "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-/PfY9XUFiHGOfi2GxhHQkqG7/CEIq+qgRN0fXl9N5D/3Irdpp9WhBvKvDS1ohfTK"
+    "integrity": "sha384-5LI9LwOeg+5JQxfazQgUepwlntc48LFsbinf+lg3if0bmSld4go/6NmS/d9KFpbR"
   },
   {
     "bundles/js/error.js": [
@@ -497,7 +497,7 @@
       "wwwroot/styles/scss/pages/administration/adminmenu.css",
       "wwwroot/styles/scss/pages/administration/look-feel.css"
     ],
-    "integrity": "sha384-jyMrEnuSlV2OZ+TKF6l3A9JJ5UTcfvCMeg+CVxcDhQ9Lq4TnfkTgYeXDCuzeBZH2"
+    "integrity": "sha384-XyxNS19SyK4z+2fVGtmywPKNCP4iMjg70v2SxoI3M8f2K8Z9gIlZeQ7NsHKf+PAE"
   },
   {
     "bundles/css/security-settings.css": [
@@ -508,7 +508,7 @@
       "wwwroot/styles/scss/ej2customization/numeric-box-customization.css",
       "wwwroot/styles/scss/pages/administration/securitysettings.css"
     ],
-    "integrity": "sha384-mrb6rpSbb5N/igq+zkv4ShLOJzvdoQz8UyIqYgBzmZX3M56/S/r+DPgM+W9kEFAe"
+    "integrity": "sha384-YpYGdVt9c4FODti9oj55pSeQGp/QD33QVQNHwuEx97Heut2Rzt6pNbMxOHFPU8qu"
   },
   {
     "bundles/css/error-page-layout.css": [

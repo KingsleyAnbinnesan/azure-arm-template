@@ -163,10 +163,6 @@
 #samesite-dialog .e-footer-content .e-control.e-btn {
   margin-right: 160px; }
 
-.e-dlg-content {
-  padding: 0 !important;
-  overflow: visible; }
-
 #dialog-container {
   border: none !important;
   box-shadow: none !important; }
@@ -206,6 +202,9 @@
 
 #rules-add-dialog {
   width: 400px !important; }
+  #rules-add-dialog .e-dlg-content {
+    padding: 0 !important;
+    overflow: visible; }
 
 #rules-add-dialog_title {
   width: 200px !important; }

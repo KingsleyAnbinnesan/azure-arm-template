@@ -13,7 +13,6 @@ var isConnectSrcChipBinded = false;
 var isFrameSrcChipBinded = false;
 var isFrameAncChipBinded = false;
 var isEditing = false;
-var firewallRulesData;
 var attributeGrid;
 var exisitingRuleName=null;
 var existsIpAddress = null;
@@ -385,21 +384,21 @@ $(document).on("click", "#x-frame", function () {
 });
 
 $(document).on("click", "#update-network-settings", function () {
-    if (!dataSourceRule || dataSourceRule.length === 0) {
-        WarningAlert(window.Server.App.LocalizationContent.SecuritySettings, window.Server.App.LocalizationContent.IpAddressSettingsFailed);
-        return;
-    }
+    var isEnabledCheck = $("#restrict-ipwhitelist-enabled").is(":checked");
     var isIPAddressExists = dataSourceRule.some(function (rule) {
         return rule.IPAddress === currentUserIP;
     });
-
-    if (!isIPAddressExists) {
-        WarningAlert(window.Server.App.LocalizationContent.SecuritySettings, window.Server.App.LocalizationContent.CurrentUserIpAddress);
-        return;
-    }
-
-    var isEnabledCheck = $("#restrict-ipwhitelist-enabled").is(":checked");
     var ruleData = { IsEnabled: isEnabledCheck, IPWhitelistingRules: dataSourceRule };
+    if(isEnabledCheck) {
+        if (!dataSourceRule || dataSourceRule.length === 0) {
+            WarningAlert(window.Server.App.LocalizationContent.SecuritySettings, window.Server.App.LocalizationContent.IpAddressSettingsFailed);
+            return;
+        }
+        if (!isIPAddressExists) {
+            WarningAlert(window.Server.App.LocalizationContent.SecuritySettings, window.Server.App.LocalizationContent.CurrentUserIpAddress);
+            return;
+        }
+    }
     showWaitingPopup();
     $.ajax({
         type: "POST",
@@ -766,24 +765,28 @@ $(document).on("keyup", "#frame-anc-content", function (e) {
         applySrcContainer("#txt-frameanc");
     }
 });
+
 $(document).on("paste", "#txt-stylesrc", function (e) {
     if ($(this).closest('#style-src-content').hasClass('src-disabled')) {
         e.preventDefault();
     }
-    else
-    {
+    else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "style-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-stylesrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "style-src-chip-content") && value != "") {
                     styleSrcChipData.push(value);
                     srcChipConversion(styleSrcChipData, "style-src-chip-content", "#txt-stylesrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-stylesrc").val("");
+                $("#txt-stylesrc").val(output.trim());
             }, 100);
         }
     }
@@ -794,18 +797,22 @@ $(document).on("paste", "#txt-scriptsrc", function (e) {
         e.preventDefault();
     }
     else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "script-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-scriptsrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "script-src-chip-content") && value != "") {
                     scriptSrcChipData.push(value);
                     srcChipConversion(scriptSrcChipData, "script-src-chip-content", "#txt-scriptsrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-scriptsrc").val("");
+                $("#txt-scriptsrc").val(output.trim());
             }, 100);
         }
     }
@@ -816,18 +823,22 @@ $(document).on("paste", "#txt-fontsrc", function (e) {
         e.preventDefault();
     }
     else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "font-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-fontsrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "font-src-chip-content") && value != "") {
                     fontSrcChipData.push(value);
                     srcChipConversion(fontSrcChipData, "font-src-chip-content", "#txt-fontsrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-fontsrc").val("");
+                $("#txt-fontsrc").val(output.trim());
             }, 100);
         }
     }
@@ -837,20 +848,23 @@ $(document).on("paste", "#txt-imgsrc", function (e) {
     if ($(this).closest('#img-src-content').hasClass('src-disabled')) {
         e.preventDefault();
     }
-    else
-    {
+    else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "img-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-imgsrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "img-src-chip-content") && value != "") {
                     imgSrcChipData.push(value);
                     srcChipConversion(imgSrcChipData, "img-src-chip-content", "#txt-imgsrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-imgsrc").val("");
+                $("#txt-imgsrc").val(output.trim());
             }, 100);
         }
     }
@@ -861,18 +875,22 @@ $(document).on("paste", "#txt-connectsrc", function (e) {
         e.preventDefault();
     }
     else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "connect-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-connectsrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "connect-src-chip-content") && value != "") {
                     connectSrcChipData.push(value);
                     srcChipConversion(connectSrcChipData, "connect-src-chip-content", "#txt-connectsrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-connectsrc").val("");
+                $("#txt-connectsrc").val(output.trim());
             }, 100);
         }
     }
@@ -882,20 +900,23 @@ $(document).on("paste", "#txt-framesrc", function (e) {
     if ($(this).closest('#frame-src-content').hasClass('src-disabled')) {
         e.preventDefault();
     }
-    else
-    {
+    else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
-        var content = data.split(/[\s,;\r\n]+/);
+        var content = data.split(/[\s,;\r?\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "frame-src-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-framesrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                } else if (isSrcChipAlreadyExists(value, "frame-src-chip-content") && value != "") {
                     frameSrcChipData.push(value);
                     srcChipConversion(frameSrcChipData, "frame-src-chip-content", "#txt-framesrc");
                 }
             }
             setTimeout(function () {
-                $("#txt-framesrc").val("");
+                $("#txt-framesrc").val(output.trim());
             }, 100);
         }
     }
@@ -905,20 +926,24 @@ $(document).on("paste", "#txt-frameanc", function (e) {
     if ($(this).closest('#frame-anc-content').hasClass('src-disabled')) {
         e.preventDefault();
     }
-    else
-    {
+    else {
+        var output = "";
         var data = e.originalEvent.clipboardData.getData('Text').trim();
         var content = data.split(/[\s,;\r\n]+/);
         if (content.length > 1) {
             for (var i = 0; i < content.length; i++) {
                 var value = content[i];
-                if (isSrcChipAlreadyExists(value, "frame-anc-chip-content") && value != "") {
+                if (!isValidOrigin(value)) {
+                    output = output + value + " ";
+                    $("#txt-framesrc").parent().next().html(window.Server.App.LocalizationContent.ValidationMessage);
+                }
+                else if (isSrcChipAlreadyExists(value, "frame-anc-chip-content") && value != "") {
                     frameAncChipData.push(value);
                     srcChipConversion(frameAncChipData, "frame-anc-chip-content", "#txt-frameanc");
                 }
             }
             setTimeout(function () {
-                $("#txt-frameanc").val("");
+                $("#txt-frameanc").val(output.trim());
             }, 100);
         }
     }

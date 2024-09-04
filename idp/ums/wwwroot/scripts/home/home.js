@@ -182,11 +182,12 @@ function initializePage() {
         }
     });
 
-    $(document).on('click', '.tenant-card', function () {
-        var siteUrl = $(this).find('.sites-card a').attr('href');
-        window.open(siteUrl, '_blank');
+    $(document).on('click', '.tenant-card', function (event) {
+        if (!$(event.target).is('a')) {
+            var siteUrl = $(this).find('.sites-card a').attr('href');
+            window.open(siteUrl, '_blank');
+        }
     });
-    
 }
 function cardGenerate(n)
 {

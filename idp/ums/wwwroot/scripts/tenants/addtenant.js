@@ -125,6 +125,11 @@ $(document).ready(function () {
     }
 
     if (actionType.toLowerCase() != "edit") {
+        var inputDomain = ""
+        if (isValidUrl($("#input-domain").val())) {
+            inputDomain = $("#input-domain").val();
+        }
+        
         if (useSiteIdentifierEnable) {
             $(".site-url-identifier").removeClass("hide");
         }
@@ -138,7 +143,7 @@ $(document).ready(function () {
         else {
             $(".site-default-text").html("").html(boldBiPath);
         }
-        $(".site-domain").html($("#enable-ssl").val() + "://" + $("#input-domain").val());
+        $(".site-domain").html($("#enable-ssl").val() + "://" + inputDomain);
         $(".site-url").attr("data-content", $(".site-domain").html() + $(".site-default-text").text());
     }
 
