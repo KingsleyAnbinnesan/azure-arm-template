@@ -90,7 +90,8 @@ $(document).ready(function () {
         height: "176px",
         isModal: true,
         animationSettings: { effect: 'Zoom' },
-        visible: false
+        visible: false,
+        close: languageDeleteDialogClose
     });
     languageDeleteDialog.appendTo("#language-delete-dialog");
 
@@ -448,6 +449,8 @@ function languageDeleteDialogClose() {
     count = 0;
     $("#delete-language").hide();
     $(".selected-language").hide();
+    $("#add-language").attr("disabled", false);
+    $(".su-add").removeClass('su-disable');
     localizationGrid.clearSelection();
     localizationGrid.refresh();
 }
@@ -482,6 +485,8 @@ function deleteLanguages() {
     count = 0;
     $(".selected-language").hide();
     $("#delete-language").hide();
+    $("#add-language").attr("disabled", false);
+    $(".su-add").removeClass('su-disable');
     hideWaitingPopup("localization-container");
 }
 

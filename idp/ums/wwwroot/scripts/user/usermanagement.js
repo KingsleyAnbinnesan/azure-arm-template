@@ -716,6 +716,9 @@ function onAddTenantsDialogClose() {
     gridObj.clearSelection();
     gridObj.refresh();
     document.getElementById("grant-access-dialog").ej2_instances[0].hide();
+    $("#add-tenant-search").val("");
+    $("#add-user-search-area").find("span.su.su-inner-close.close-icon").css("display", "none");
+    $("#add-user-search-area").find("span.su.su-search.search-icon").css("display", "block");
 }
 
 function provideAccesstoTenants() {

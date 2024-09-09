@@ -341,7 +341,7 @@
     var emailEditor = "@Url.Action("EmailEditor", "scheduler")";
     var dataChanges = "@Url.Action("DataChanges", "scheduler")";
     var getwidgetUrl = "@Url.Action("GetWidgets", "scheduler")";
-    var getCategoryUrl = "@Url.Action("GetCategories", "scheduler")";
+    var getCategoryUrl = { "web": "@Url.Action("GetCategories", "scheduler")", "api": "/internal/items/get-categories" };
     var getTenantStatusUrl = "@Url.Action("GetTenantStatus", "PartialView")";
     var getNotificationCountUrl = "@Url.Action("GetNotificationCount", "PartialView")";
     var dataAlertUrl = { "web": "@Url.Action("DataAlert", "scheduler")", "api": "/internal/schedules/data-alert" };

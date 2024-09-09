@@ -26,7 +26,7 @@
     "bundles/js/additional-settings.js": [
       "wwwroot/scripts/administration/additionalsettings.js"
     ],
-    "integrity": "sha384-CwDQ9B2mcew6JLGdEq+QCrbhrmD8tIMb+lAr57W29muZbwO0U86toEFqpC/hpQXv"
+    "integrity": "sha384-ZMGWi4LVCjv6xLvby00FiTsKvd+lna96OVCCgsfPCYKwD9cMJy30ow+mdEYaYwaq"
   },
   {
     "bundles/js/site-settings.js": [
@@ -42,7 +42,7 @@
       "wwwroot/scripts/administration/emailactivitylog.js",
       "wwwroot/scripts/administration/managelanguage.js"
     ],
-    "integrity": "sha384-Nx1CfDS7r2d68PpAvb6Q6ZQutLzp+KxrbQUDsJOGzgcPFwPFYFpXJQCKCY4z8ZJz"
+    "integrity": "sha384-KLNQT+Ft1/MfU5E6j/PRRsuyK1qOXxJeexmgwYOobvPHrVF3f/Kd418yrujK6yW9"
   },
   {
     "bundles/js/user-settings.js": [
@@ -82,7 +82,7 @@
       "wwwroot/scripts/administration/api-keys.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-UStUs+9mx2YKuNanT4N32KfQJhxs6eaBdTVEaYLjO7/TO9AHp+1NS2dCnOfU+SMK"
+    "integrity": "sha384-QBwCXfyGdTI4aAIPw6Q5rWLRVK8hoIz0JsJUJHubq7xFZYKNnUkNYeaP8RrEtnWX"
   },
   {
     "bundles/js/auth-settings-page.js": [
@@ -139,7 +139,7 @@
       "wwwroot/scripts/password/passwordpolicy.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-3QT49X2BIlrWZv/9+TcBNRRxh+LaAggCTarkB5vASDo+cqFBC15Z2+w70EtXX/lU"
+    "integrity": "sha384-wHV+XiZtiw32JZet4SFCFpYrB/ay+vC/LMtNMF00mF9Ori6hT53S4LttWesasANu"
   },
   {
     "bundles/js/iframe.js": [
@@ -195,7 +195,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-iXTrNuaATSXldOccg43dn5qC/MOhVXlfXF17tyPsAlnMiAXiSqVqLWgUDOn2Jgax"
+    "integrity": "sha384-cZsPQ5T605+CzSsMQANv0ahKl0HUM7mQygzZYFIe+7V4VUSO46MNf0DuGAFY40jt"
   },
   {
     "bundles/js/ej2.js": [
@@ -213,7 +213,7 @@
     "bundles/js/offline-license-update.js": [
       "wwwroot/scripts/administration/offlinelicenseupdate.js"
     ],
-    "integrity": "sha384-uzytxIAzz+ckE4Nu5Hgw6JdCHWn6fyeYvWsrfnHvNy4cKiyXjkmdyWtopcvyVU3O"
+    "integrity": "sha384-9Zp3zGQcrVmaKMoxDD3i25qVU6zdHkDDGIIDkrH8cUeXwHE3OVBczVburosYf7st"
   },
   {
     "bundles/js/api-keys.js": [
@@ -304,7 +304,7 @@
       "wwwroot/styles/scss/pages/administration/managelanguage.css",
       "wwwroot/styles/scss/pages/components/grid.css"
     ],
-    "integrity": "sha384-5R18fpDzQbOjQTXClogqJb+WMOoWxFrbsbLnp+dqcEBfoVURkv8T3bVm+gq7YLel"
+    "integrity": "sha384-ZI3gZ/FwPRMeu1rsuVWkxHI6gBCvOk3q18i0uOTe6HmVFRsg5ylmWDugQ8Pa470g"
   },
   {
     "bundles/css/user-settings.css": [

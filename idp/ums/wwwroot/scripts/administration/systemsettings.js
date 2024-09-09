@@ -261,16 +261,20 @@ $(document).ready(function () {
             return true;
     }, window.Server.App.LocalizationContent.IsValidUrl);
 
-    $.validator.addMethod("isRequired", function (value, element) {
+    $.validator.addMethod("required", function (value, element) {
         return !isEmptyOrWhitespace(value);
     }, window.Server.App.LocalizationContent.EnterName);
 
+    $.validator.addMethod("isValidContent", function (value, element) {
+        return !/^\s/.test(value);
+    }, window.Server.App.LocalizationContent.AvoidTrialingWhiteSpace);
+
     $.validator.addMethod("isValidName", function (value, element) {
-        return IsValidName("name", value);
+        return IsValidName("name", value) && !/^\s/.test(value);
     }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isValidEmail", function (value, element) {
-        return IsEmail(value);
+        return IsEmail(value) && !/^\s/.test(value);
     }, window.Server.App.LocalizationContent.InvalidEmailAddress);
 
     function validateIPWhitelisted() {
@@ -386,10 +390,20 @@ $(document).ready(function () {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
                     }
+                },
+                isValidContent: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
+                    }
                 }
             },
             "port_number": {
                 required: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
+                    }
+                },
+                isValidContent: {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
                     }
@@ -424,10 +438,20 @@ $(document).ready(function () {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
                     }
+                },
+                isValidContent: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
+                    }
                 }
             },
             "sender_user_name": {
                 required: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
+                    }
+                },
+                isValidContent: {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 0;
                     }
@@ -438,6 +462,11 @@ $(document).ready(function () {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
                     }
+                },
+                isValidContent: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
+                    }
                 }
             },
             "client_id": {
@@ -445,10 +474,20 @@ $(document).ready(function () {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
                     }
+                },
+                isValidContent: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
+                    }
                 }
             },
             "client_secret": {
                 required: {
+                    depends: function () {
+                        return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
+                    }
+                },
+                isValidContent: {
                     depends: function () {
                         return parseInt(document.getElementById("mail-account").ej2_instances[0].value) === 1;
                     }
@@ -544,17 +583,17 @@ $(document).ready(function () {
     $(document).on("change", "#enablepoweredbysyncfusion", function () {
         if ($("#enablepoweredbysyncfusion").is(":checked") == false) {
             $("#poweredbysyncfusion").removeClass("show").hide();
-            $("#upload-poweredlogo-image").children().find(".e-uploadinput").attr('disabled', true);
+            $(".powerdby-section").children().find(".upload-link button").attr('disabled', true);
             $(".footer-logo").find(".logo-description h3").addClass('powerdby-logo-disabled');
             $(".footer-logo").find(".logo-description p").addClass('powerdby-logo-disabled');
-            $("#upload-poweredlogo-image").children().find("#upload-poweredlogo-image_SelectButton").addClass('powerdby-logo-link-disabled');
+            $(".powerdby-section").children().find(".upload-link button").addClass("powerdby-logo-disabled");
         }
         else {
             $("#poweredbysyncfusion").removeClass("hide").show();
-            $("#upload-poweredlogo-image").children().find(".e-uploadinput").attr('disabled', false);
+            $(".powerdby-section").children().find(".upload-link button").attr('disabled', false);
             $(".footer-logo").find(".logo-description h3").removeClass('powerdby-logo-disabled');
             $(".footer-logo").find(".logo-description p").removeClass('powerdby-logo-disabled');
-            $("#upload-poweredlogo-image").children().find("#upload-poweredlogo-image_SelectButton").removeClass('powerdby-logo-link-disabled');
+            $(".powerdby-section").children().find(".upload-link button").removeClass("powerdby-logo-disabled");
         }
         addFooterSeparator();
     });
