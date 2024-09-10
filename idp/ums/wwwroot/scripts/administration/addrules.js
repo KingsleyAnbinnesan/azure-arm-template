@@ -53,9 +53,7 @@ $(document).ready(function () {
         }
         return true;
     }, window.Server.App.LocalizationContent.InvalidIPAddress);
-
-
-
+    
     $("#dialog-container").validate({
         errorElement: 'span',
         onkeyup: function (element, event) {
@@ -70,6 +68,7 @@ $(document).ready(function () {
         onfocusout: function (element) { $(element).valid(); },
         rules: {
             "rule-name": {
+                isRequired: true,
                 isValidRuleName: true,
                 isRuleNameExists: true,
             },

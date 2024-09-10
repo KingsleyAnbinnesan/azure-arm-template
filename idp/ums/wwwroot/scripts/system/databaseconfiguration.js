@@ -43,6 +43,10 @@
         }
     }
 
+    $.validator.addMethod("isWhiteSpace", function (value, element) {
+        return !/^\s/.test(value);
+    }, window.Server.App.LocalizationContent.AvoidTrialingWhiteSpace);
+
     $("#db-content-holder").validate({
         errorElement: "span",
         onkeyup: function (element, event) {
@@ -120,6 +124,9 @@
             },
             schemaName: {
                 isWhitespaceOrNumeric: true
+            },
+            additionalparameter: {
+                isWhiteSpace: true
             }
         },
         highlight: function (element) {

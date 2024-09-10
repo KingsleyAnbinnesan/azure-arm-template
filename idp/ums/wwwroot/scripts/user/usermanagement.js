@@ -972,6 +972,7 @@ $(document).on("change", "#csvfile", function (e) {
         $(".upload-box").addClass("e-error");
     } else {
         $("#csv-upload").attr("disabled", false);
+        $("#user-import-validation-msg").css("display", "none");
         $("#filename,#trigger-file").removeClass("validation-message");
         $("#filename").val(value);
         $(".upload-box").removeClass("e-error");
