@@ -338,14 +338,14 @@ $(document).on('click', '.toggle-button-favorite', function (event) {
 });
 
 $(document).on('keyup', '#search-tenants-allsites', function () {
-    if ($('#card-view-button').hasClass('active')) {
+    if ($('#card-view-button').hasClass('active') && !isNullOrWhitespace($("#search-tenants-allsites").val().trim())) {
         skipAll = 0;
         $("#tenant-cards-container-all").empty();
         loadTenantCards(TenantSites + "?userId=" + userId, skipAll, take);
     }
 });
 $(document).on('keyup', '#search-tenants-favorite', function () {
-    if ($('#card-view-button').hasClass('active')) {
+    if ($('#card-view-button').hasClass('active') && !isNullOrWhitespace($("#search-tenants-favorite").val().trim())) {
         skipFavorite = 0;
         $("#tenant-cards-container-favorite").empty();
         loadFavoriteCards(TenantFavoriteListurl + "?userId=" + userId, skipFavorite, take);
@@ -508,7 +508,7 @@ function initializeFavoriteGrid() {
 }
 
 function loadTenantCards(baseUrl, skip, take) {
-    var searchValue = $("#search-tenants-allsites").val();
+    var searchValue = $("#search-tenants-allsites").val().trim();
     var sorting = $("input[name='order-by-sites']:checked").val();
     var url = `${baseUrl}&sort=${sorting}&searchValue=${searchValue}&skip=${skip}&take=${take}`;
     if(onScroll) {
@@ -571,7 +571,7 @@ function loadTenantCards(baseUrl, skip, take) {
     });
 }
 function loadFavoriteCards(baseUrl, skip, take) {
-    var searchValue = $("#search-tenants-favorite").val();
+    var searchValue = $("#search-tenants-favorite").val().trim();
     var sorting = $("input[name='order-by-favorite']:checked").val();
     var url = `${baseUrl}&sort=${sorting}&searchValue=${searchValue}&skip=${skip}&take=${take}`;
     if(onScroll) {
@@ -759,9 +759,9 @@ function fnOnSitesGridLoad() {
     isFirstRequest = true;
     var searchValue;
     if ($("#all-sites-tab").parent().hasClass("active")) {
-        searchValue = $("#search-tenants-allsites").val();
+        searchValue = $("#search-tenants-allsites").val().trim();
     } else {
-        searchValue = $("#search-tenants-favorite").val();
+        searchValue = $("#search-tenants-favorite").val().trim();
     }
 
     if (this.properties.query.params.length > 0) {
@@ -782,9 +782,9 @@ function fnOnSitesGridActionBegin(args) {
     isFirstRequest = true;
     var searchValue;
     if ($("#all-sites-tab").parent().hasClass("active")) {
-        searchValue = $("#search-tenants-allsites").val();
+        searchValue = $("#search-tenants-allsites").val().trim();
     } else {
-        searchValue = $("#search-tenants-favorite").val();
+        searchValue = $("#search-tenants-favorite").val().trim();
     }
 
     if (this.properties.query.params.length > 0) {

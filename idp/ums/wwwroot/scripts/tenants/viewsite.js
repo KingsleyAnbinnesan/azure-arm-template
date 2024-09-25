@@ -295,7 +295,7 @@ function pushUrl(data) {
 
 function fnOnApplicationGridLoad() {
     isFirstRequest = true;
-    var searchValue = $("#search-tenants").val();
+    var searchValue = $("#search-tenants").val().trim();
     if (this.properties.query.params.length > 0) {
         this.properties.query.params = [];
         this.properties.query.params.push({ key: "searchKey", value: searchValue });
@@ -317,7 +317,7 @@ function fnApplicationRecordClick(args) {
 
 function fnOnApplicationGridActionBegin(args) {
     isFirstRequest = true;
-    var searchValue = $("#search-tenants").val();
+    var searchValue = $("#search-tenants").val().trim();
     if (this.properties.query.params.length > 0) {
         this.properties.query.params = [];
         this.properties.query.params.push({ key: "searchKey", value: searchValue });

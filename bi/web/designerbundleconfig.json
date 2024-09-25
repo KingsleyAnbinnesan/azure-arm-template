@@ -21,7 +21,7 @@
     ]
   },
   {
-    "cdn/scripts/designer/dashboard-designer-component.js": [
+    "cdn/scripts/designer/dashboard-designer-bundle.js": [
       "wwwroot/webdesignerservice/scripts/ej.dashboarddesigner.min.js",
       "wwwroot/webdesignerservice/scripts/codemirror.min.js"
     ]

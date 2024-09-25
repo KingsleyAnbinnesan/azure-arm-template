@@ -1526,6 +1526,11 @@
     ]
   },
   {
+    "cdn/scripts/userActivityLog.js": [
+      "wwwroot/Scripts/Administration/UserActivityLog.js"
+    ]
+  },
+  {
     "cdn/scripts/cors-settings.js": [
       "wwwroot/Scripts/Administration/CorsSettings.js"
     ]

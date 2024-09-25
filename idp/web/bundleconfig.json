@@ -53,7 +53,7 @@
     "bundles/js/accounts-forget-password.js": [
       "wwwroot/scripts/accounts/forgot-password.js"
     ],
-    "integrity": "sha384-V0Lf8sVbIgta+5OBvteCAkDHpC8CUcJTh10RsQ161ipwdiPa5U9Ul7in2Wo7hGsy"
+    "integrity": "sha384-y/98E/TmjiHxzK0lmsjcFqp7fC8Bk0+Tyaz0lEnco6BCrDh0lE1xsiflRUx4OP1f"
   },
   {
     "bundles/js/profile.js": [
@@ -84,7 +84,7 @@
       "wwwroot/scripts/password/showhidepassword.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-BzSRF64nFRQunPo4ZfrZOlpBE40oS4r0aQxPLaTd5aq6E7sto939/v9zrfypKBmR"
+    "integrity": "sha384-QkqlVtqXLKrmL/tEdQTM68ScOhuXX8BEirbD2V5H6RaNWoNw/SYFWW1L8uJ3EaxY"
   },
   {
     "bundles/js/ej2.js": [
@@ -140,7 +140,7 @@
     "bundles/css/accounts-forget-password.css": [
       "wwwroot/styles/scss/pages/accounts/forgetpassword.css"
     ],
-    "integrity": "sha384-QP6W3DCKRbZiY42MW/GH4ZovkNNIXf32tg6f20aOuiDw1kUqQybnSDEr7vs5wKG3"
+    "integrity": "sha384-0mQvNazsfANf1yit0MIWWI0aYgLekWLmRYU3uNVx60+l0aJbhQql89lHWUr2kIjQ"
   },
   {
     "bundles/css/accounts-change-password.css": [
