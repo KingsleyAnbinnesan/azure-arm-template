@@ -94,7 +94,7 @@
       "wwwroot/scripts/administration/api-keys.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-lKZmK0s7j2vWNJNMkI1WPuR63j9YtvVZy97qTYzd5DCF+qTvNzp8c7Ij18grJLim"
+    "integrity": "sha384-TCbsSlDM8FTvAhw/wGrdCvZ589Ro+RumUjqBHcZWB2rTNw+/22eW1ezjS73RNkQk"
   },
   {
     "bundles/js/auth-settings-page.js": [

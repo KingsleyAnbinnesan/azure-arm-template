@@ -608,6 +608,9 @@ var Designer = {
                     longDash: "LongDash",
                     longDashDotDot: "LongDashDotDot"
                 },
+                datePicker: {
+                    placeholder: "Select Date"  
+                  },
                 imageTooltipSettings: {
                     showTooltip: "Show Tooltip",
                         tooltipText: ""
@@ -2561,8 +2564,8 @@ var Designer = {
 				exportFail: "Exporting failed",
 				exportFailedContent: "Your export request has failed.",
                 exportRestrictContent: "An export request with similar settings is already in progress. Please wait until it is completed.",
-                dialogmsgETL:"We recommend utilizing the Bold ETL to manage data source operations. To initiate this process, click on the 'Redirect to Bold ETL' button.",
-                etlDialogHeaderText: "Redirect to Bold ETL",
+                dialogmsgETL:"We recommend utilizing the Bold Data Hub to manage data source operations. To initiate this process, click on the 'Redirect to Bold Data Hub' button.",
+                etlDialogHeaderText: "Redirect to Bold Data Hub",
                 etlContinuebtnText: "Continue with connector"
             },
             errorCodes: {
@@ -7748,8 +7751,8 @@ var Designer = {
 			},
 			boldbiaiassistant: {
 				greetMessage: "Hi ",
-                aiTitle: " AI Assistant",
-                chatMinimizeTooltip: "Minimize",
+                aiTitle: "AI Assistant",
+                chatCloseTooltip: "Close",
                 chatUsageTooltip: "AI Usage",
                 detailedUsageView: "Detailed usage view",
                 chatPlaceholder: "Ask questions about your data",
@@ -7770,7 +7773,14 @@ var Designer = {
 				selectedWidget: "selected_widget",
 				selectedWidgetDeletion: "Selected widget deleted successfully.",
 				specifiedWidgetDeletion: "Widget deleted successfully.",
-				widgetNotFound: "Given widget does not exist. Please provide a valid widget name."
+				widgetNotFound: "Given widget does not exist. Please provide a valid widget name.",
+				welcomeTextForChartCreate: "Ask me to create visualizations for your queries on data.",
+                welcomeTextForChartUpdate: "Ask me to update widget properties in the designer.",
+                activateButton: "Activate",
+                startYourTutorial: "Start your tutorial",
+				licenseWarning: "AI license is inactive. Please activate it to continue using assistance.",
+				validateActivation: "Validate Activation",
+				datasourceError: "The data source is not available. Please create a data source and try again."
             },
 			replaceValues: { 
 				applyBtnText: "Apply",

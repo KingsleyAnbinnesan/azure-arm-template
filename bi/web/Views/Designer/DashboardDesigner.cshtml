@@ -177,6 +177,7 @@
         var getUserNotificationsPartialViewResultUrl = "@Url.Action("GetUserNotificationsPartialViewResult", "notification")";
         var licenseSettings =@Html.Raw(JsonConvert.SerializeObject(licenseSettings));
 		var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl"; // If you are working on local developemnt change the baseurl as localsource url
+        var isAIFeatureEnabled =  @Json.Serialize(globalAppSettings.SystemSettings.IsAiServiceEnabled);
         var currentUrl = "@currentUrl";
         var organizationName = "@globalAppSettings.SystemSettings.OrganizationName";
         var isDebug = "@isDebug";
