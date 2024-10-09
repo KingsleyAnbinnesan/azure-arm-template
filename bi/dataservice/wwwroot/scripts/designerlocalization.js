@@ -7803,6 +7803,7 @@ var Designer = {
 				demoVideo: "Watch Tutorial Video",
 				term1: "I acknowledge the ",
 				term2: " guidelines and the ",
+				privacyPolicy: "privacy policy.",
             },
 			replaceValues: { 
 				applyBtnText: "Apply",
