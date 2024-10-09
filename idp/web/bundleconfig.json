@@ -120,7 +120,7 @@
       "wwwroot/styles/scss/accounts/login.css",
       "wwwroot/styles/scss/pages/accounts/login.css"
     ],
-    "integrity": "sha384-sQy5Ly8kBk+pzWH+JYw78oHew2t+ah1/5xAXzrYz0oxTBwlY6JsWBjRicsF7/e6c"
+    "integrity": "sha384-YpiDCddW2lnJ808wUWej1G3C5eGbsJJup6kgJhLDvR7HA/B7aEOUxyNnn6bgql3v"
   },
   {
     "bundles/css/accounts-layout.css": [
