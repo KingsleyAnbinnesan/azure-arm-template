@@ -7769,7 +7769,7 @@
                 widgetNameQuery: "Please provide the widget name to update the property as requested.",
 				defaultBrand: "<Brand>",
                 like: 'Like',
-                disLike: 'DisLike',
+                disLike: 'Dislike',
                 sessionEndMessage: "The session ended due to inactivity. Please enter a query to start a new session.",
 				bannerText: "Try our new AI Assistant",
 				selectedWidget: "selected_widget",
