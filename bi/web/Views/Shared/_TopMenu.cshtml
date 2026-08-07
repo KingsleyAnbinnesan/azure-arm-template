@@ -47,6 +47,18 @@
                     </span>
                 </li>
             }
+            @if (isSandbox)
+            {
+                <li class="icon-list-item free-tier">
+                    <button class="e-control e-btn e-lib e-primary e-flat free-tier-button">@T["Free Tier"]</button>
+                </li>
+                @if (isDashboardPage)
+                {
+                    <li class="icon-list-item show-tour">
+                        <button class="e-control e-btn e-lib e-secondary e-flat show-tour-button">@T["Quick Tour"]</button>
+                    </li>
+                }
+            }
             @if (showHelp)
             {
                 <li class="icon-list-item help-icon-list-item listing-dropdown">
@@ -255,16 +267,6 @@
         </ul>
         @if (isSandbox)
         {
-            <div class="icon-list-item free-tier">
-                <button class="e-control e-btn e-lib e-primary e-flat free-tier-button">@T["Free Tier"]</button>
-            </div>
-            @if (isDashboardPage)
-            {
-                <div class="icon-list-item show-tour">
-                    <button class="e-control e-btn e-lib e-secondary e-flat show-tour-button">@T["Quick Tour"]</button>
-                </div>
-            }
-
             <div id="freeTierDialogTemplate" style="display: none;">
                 <div class="free-tier-header">
                     <p>

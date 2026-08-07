@@ -54,7 +54,7 @@
 
      <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
     var subAppPath = "@ServerAppConfig.WebRootPath";
-        var isSelfHosted = "@isSelfHosted";
+        var isSelfHosted = @Json.Serialize(isSelfHosted);
         var widgetsPagePermissionUrl = "@Url.Action("CheckAdminPagePermission", "Administration")";
     </script>
 }

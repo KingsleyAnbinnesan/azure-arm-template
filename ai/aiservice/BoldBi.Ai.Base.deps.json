@@ -9,6 +9,7 @@
       "BoldBi.Ai.Base/1.0.0": {
         "dependencies": {
           "AWSSDK.S3": "3.7.104.12",
+          "AngleSharp": "1.5.2",
           "Anthropic": "12.20.0",
           "BoldBi.Ai.Configuration": "1.0.0",
           "BoldBi.Ai.ConnectionManager": "1.0.0",
@@ -32,10 +33,10 @@
           "Newtonsoft.Json": "13.0.4",
           "System.Configuration.ConfigurationManager": "10.0.10",
           "log4net": "3.3.0",
-          "Syncfusion.Dashboard.Core": "16.1.90.0",
-          "Syncfusion.Dashboard.DataManager": "16.1.90.0",
-          "Syncfusion.Dashboard.Designer.Logger": "16.1.90.0",
-          "Syncfusion.Dashboard.Web.Serialization.DOM": "16.1.90.0",
+          "Syncfusion.Dashboard.Core": "16.2.5.0",
+          "Syncfusion.Dashboard.DataManager": "16.2.5.0",
+          "Syncfusion.Dashboard.Designer.Logger": "16.2.5.0",
+          "Syncfusion.Dashboard.Web.Serialization.DOM": "16.2.5.0",
           "Syncfusion.Server.Base.Encryption": "1.0.3.0",
           "Syncfusion.Server.Base.Logger": "1.0.3.0"
         },
@@ -43,17 +44,17 @@
           "BoldBi.Ai.Base.dll": {}
         }
       },
-      "AngleSharp/0.17.1": {
+      "AngleSharp/1.5.2": {
         "runtime": {
-          "lib/netstandard2.0/AngleSharp.dll": {
-            "assemblyVersion": "0.17.1.0",
-            "fileVersion": "0.17.1.0"
+          "lib/net10.0/AngleSharp.dll": {
+            "assemblyVersion": "1.5.2.0",
+            "fileVersion": "1.5.2.0"
           }
         }
       },
       "AngleSharp.Css/0.17.0": {
         "dependencies": {
-          "AngleSharp": "0.17.1"
+          "AngleSharp": "1.5.2"
         },
         "runtime": {
           "lib/net7.0/AngleSharp.Css.dll": {
@@ -230,7 +231,7 @@
       },
       "HtmlSanitizer/9.0.892": {
         "dependencies": {
-          "AngleSharp": "0.17.1",
+          "AngleSharp": "1.5.2",
           "AngleSharp.Css": "0.17.0"
         },
         "runtime": {
@@ -1443,8 +1444,8 @@
         },
         "runtime": {
           "BoldBi.Ai.Configuration.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1461,8 +1462,8 @@
         },
         "runtime": {
           "BoldBi.Ai.ConnectionManager.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1482,40 +1483,40 @@
         },
         "runtime": {
           "BoldBi.Ai.Core.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core/16.1.90.0": {
+      "Syncfusion.Dashboard.Core/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.DataManager/16.1.90.0": {
+      "Syncfusion.Dashboard.DataManager/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.DataManager.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Designer.Logger/16.1.90.0": {
+      "Syncfusion.Dashboard.Designer.Logger/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Designer.Logger.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization.DOM/16.1.90.0": {
+      "Syncfusion.Dashboard.Web.Serialization.DOM/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.DOM.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1535,19 +1536,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Json.Base/16.1.90.0": {
+      "Syncfusion.Dashboard.Json.Base/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Json.Base.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Xml.Base/16.1.90.0": {
+      "Syncfusion.Dashboard.Xml.Base/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Xml.Base.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1567,11 +1568,11 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core.XmlRepository/16.1.90.0": {
+      "Syncfusion.Dashboard.Core.XmlRepository/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.XmlRepository.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1607,12 +1608,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AngleSharp/0.17.1": {
+    "AngleSharp/1.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5MPI4bbixlwxb0W/smOMeIR+QlxMy5/5jD+WnIAw4pBC+7AhLPe5bS3cLgQMJyvd6q0A48sG+uYOt/ep406GLA==",
-      "path": "anglesharp/0.17.1",
-      "hashPath": "anglesharp.0.17.1.nupkg.sha512"
+      "sha512": "sha512-LVZ7rrr6GHbhERhTgVDarVygl1e6KwE96pronA90LBOMacDhxR4lB+xYLjn/vlnUu+xbOB2RM9fuCPEx5bdyWA==",
+      "path": "anglesharp/1.5.2",
+      "hashPath": "anglesharp.1.5.2.nupkg.sha512"
     },
     "AngleSharp.Css/0.17.0": {
       "type": "package",
@@ -2385,22 +2386,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core/16.1.90.0": {
+    "Syncfusion.Dashboard.Core/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.DataManager/16.1.90.0": {
+    "Syncfusion.Dashboard.DataManager/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Designer.Logger/16.1.90.0": {
+    "Syncfusion.Dashboard.Designer.Logger/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization.DOM/16.1.90.0": {
+    "Syncfusion.Dashboard.Web.Serialization.DOM/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2415,12 +2416,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Json.Base/16.1.90.0": {
+    "Syncfusion.Dashboard.Json.Base/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Xml.Base/16.1.90.0": {
+    "Syncfusion.Dashboard.Xml.Base/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2435,7 +2436,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.XmlRepository/16.1.90.0": {
+    "Syncfusion.Dashboard.Core.XmlRepository/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

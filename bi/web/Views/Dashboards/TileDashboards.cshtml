@@ -101,8 +101,13 @@
         var isMobile = @Json.Serialize(isMobile);
         var buildVersion = "@ServerAppConfig.ProductVersion";
 
-        $(function () {
-            $.ajax({
+        var dashboardItemsPartialLoadPromise = null;
+        window.loadDashboardItemsPartialResources = function () {
+            if (dashboardItemsPartialLoadPromise) {
+                return dashboardItemsPartialLoadPromise;
+            }
+
+            dashboardItemsPartialLoadPromise = $.ajax({
                 type: "GET",
                 url: partialViewsUrl,
                 async: true,
@@ -130,7 +135,9 @@
                     document.head.appendChild(preloadLink2);
                 },
             });
-        });
+
+            return dashboardItemsPartialLoadPromise;
+        };
     </script>
 
 }
@@ -151,6 +158,8 @@
      <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         var searchKey = '@Html.Encode(ViewBag.searchKey)';
         var getItemUrl = "@Url.Action("GetItems", "Dashboards")";
+        var getRecommendedItemsUrl = "@Url.Action("GetRecommendedItems", "Dashboards")";
+        var getInitialDashboardViewUrl = "@Url.Action("GetInitialDashboardView", "Dashboards")";
         var isCategoryExistUrl = "@Url.Action("iscategoryexist", "category")";
         var addCategoryUrl = "@Url.Action("addcategory", "category")";
         var addSubCategoryUrl = "@Url.Action("addSubCategory", "category")";
@@ -1273,7 +1282,7 @@
                             </div>
                             <div class="display-none" data-dashboard-visibility="empty-no-category">
                                 <span class="dashboard-empty-message display-none" data-dashboard-visibility="empty-no-category-no-create">@T["No dashboards have been shared with you."]</span>
-                                <span class="dashboard-empty-message display-none" data-dashboard-visibility="empty-no-category-can-create">@T["You don�t have any dashboards and no dashboards have been shared with you."]</span>
+                                <span class="dashboard-empty-message display-none" data-dashboard-visibility="empty-no-category-can-create">@T["You don’t have any dashboards and no dashboards have been shared with you."]</span>
                             </div>
                             <div class="display-none" data-dashboard-visibility="empty-with-category">
                                 <span class="dashboard-empty-message display-none" data-dashboard-visibility="empty-with-category-all">@T["No dashboards available to display."]</span>

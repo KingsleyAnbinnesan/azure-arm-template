@@ -11,7 +11,7 @@ def load_standalone_table_resource() -> None:
     pipeline = dlt.pipeline(
         pipeline_name="{0}base", destination='{3}', dataset_name="{0}"
     )
-    password = quote_plus("{12}")
+    password = quote_plus({12})
     engine = create_engine(f"{1}"{10}, echo=True)
     isincremental = {11}
     query = ""

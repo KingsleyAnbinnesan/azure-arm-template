@@ -318,6 +318,7 @@
         var showInWidgets = @Json.Serialize(ServerAppConfig.Designer?.DashboardExperience?.WidgetProgress?.ShowInWidgets != null && ServerAppConfig.Designer.DashboardExperience.WidgetProgress.ShowInWidgets);
         var enableModernLayout = @Json.Serialize(ServerAppConfig.Designer?.DashboardExperience?.WidgetPanel?.EnableModernLayout != null && ServerAppConfig.Designer.DashboardExperience.WidgetPanel.EnableModernLayout);
         var displayMode = @Json.Serialize(ServerAppConfig.Designer?.DashboardExperience?.WidgetPanel?.DisplayMode ?? "Both");
+		var customMessage = @Json.Serialize(ServerAppConfig.Designer?.CustomErrorMessage?.CustomMessage ?? "");
         var isUmsAdmin = "@isUmsAdmin";
         var appVersion = "@ServerAppConfig.ProductVersion";
         var canCheckSession = @Json.Serialize(canShowSession);

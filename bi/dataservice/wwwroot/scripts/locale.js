@@ -418,7 +418,8 @@
                         currentFrameText: "Current frame",
                         parentFrameText: "Parent frame",
                         popUpText: "Pop up",
-                        newWindowText: "New window"
+                        newWindowText: "New window",
+                        tabText: "Tab"
                     },
                     showPopup: "Show PopUp",
                     height: "Height",
@@ -538,7 +539,7 @@
                 },
                 basicSettings: {
                     allowSortingText: "Allow Sorting",
-                    allowResizingText: "Allow Resizing",
+					allowResizingText: "Allow Resizing",
 					allowResizingInfo: "Resizing will not take place when the width is set in Column Alignment",
                     allowResizeToFit: "Fit To Content",
                     valuesInRow: "Show Values In Row",
@@ -587,6 +588,8 @@
                     enablePointHoverScale: "Enlarge Point on Hover",
                     pointHoverScaleFactor: "Hover Scale Factor",
                     showItemsWithNoData: "Show Items With No Data",
+                    showTodayLine: "Show Today Line",
+                    todayLineStyle: "Today Line Style",
 					emptyPointMode: "Empty Point Mode",
                     enableMultiSelect: "Enable Multiselect",
                     allowFilter: "Allow Filter",
@@ -606,6 +609,10 @@
 					limitDateSelection: "Limit Date Selection",
                     maximumDateSelection: "Date Selection Mode",
 					customDateSelection: "Custom Limit Days",
+					limitMonths: "Limit Months",
+                    highlightAvailableMonths: "Highlight Available Months",
+                    showLatestMonth: "Show Latest Month",
+                    showLatestMonthInfo: "Enabling this option displays the latest available month from the data source when 'Limit Months' is enabled; otherwise, it displays the current month.",
 					monthlySelection: "Monthly",
 					weeklySelection: "Weekly",
 					quarterlySelection: "Quarterly",
@@ -675,6 +682,9 @@
 					percentSizeText: "Size",
 					chartSeriesShapeText: "Series Shape",
 					fixedCalendarSelectionText: "Fixed Calendar Selection",
+					selectionModeText: "Selection Mode",
+					chooseDateText: "Date",
+					chooseMonthText: "Month",
 					widgetOrderText: "Widgets Order",
                     applyStackOrder: "Apply Stack Order",
                     applyStackOrderInfo: "Enable this option to stack entire widgets on top of each other. By default, only the content inside each widget will stack sequentially.",
@@ -695,7 +705,8 @@
                     allowReorderInfo: "Columns can be rearranged with this option, but it only works when paging is turned on.",
                     tabLoaderInfo: "When enabled, the entire tab will load instead of loading individual widgets.",
 					textfilterPlaceHolder: "Place Holder",
-                    textfilterSearch: "Search"
+                    textfilterSearch: "Search",
+                    textOverflowMode: "Text Overflow Mode"
 				},
                 pivotChartSettings: {
                     enablePivotChart: "Enable Pivot Chart",
@@ -730,6 +741,13 @@
                     lineStyleDialogTitleText: "Custom Line Style Settings",
                     lineStyleDialogOkBtnText: "Ok",
                     lineStyleDialogCancelBtnText: "Cancel",
+                    todayLineDialogTitle: "Today Line Settings",
+                    todayLineWidth: "Line Width",
+                    todayLineFontSize: "Font Size",
+                    showTodayLineLabel: "Always Show Label",
+                    showTodayLineLabelInfo: "When disabled, the Today label is displayed only while hovering over the Today line.",
+                    todayLineLabelText: "Label Text",
+                    todayLineColor: "Line Color",
                     solid: "Solid",
                     dot: "Dot",
                     dash: "Dash",
@@ -844,7 +862,9 @@
                 },
 				kpiBasicSettings: {
 					fixedLayout: "Fixed Layout",
-					responsiveMargin: "Reponsive Margin"
+					responsiveMargin: "Reponsive Margin",
+                    fitToContent: "Fit to Content",
+                    fitToContentInfo: "Automatically adjusts the font size to fit the available space. When enabled, font size-related properties are disabled."
 				},
                 columnSettings: {
                     columnCustomize: "Column Alignment",
@@ -875,7 +895,8 @@
                     showSparkline: "Show Sparkline",
                     sparklineColor: "Color",
                     sparklineOpacity: "Opacity",
-                    sparklineColorOption: "Color Option"
+                    sparklineColorOption: "Color Option",
+                    sparklineOverlay: "Show Sparkline Background"
                 },
                 backgroundSettings: {
                     categoryText: "Image",
@@ -927,7 +948,8 @@
                     showMeasure: "Show Measure",
                     measureColor: "Color",
                     measureFontSize: "Font Size",
-                    fitToContent: "Fit To Content"
+                    fitToContent: "Fit to Content",
+                    fitToContentInfo: "Automatically adjusts the font size to fit the available space. When enabled, font size-related properties are disabled."
                 },
                 rightValueSettings: {
                     categoryText: "Right Value",
@@ -1296,6 +1318,7 @@
                 prestoText: "Presto",
                 cubejsText: "Cubejs",
                 semanticModelText: "Semantic Model",
+                azuredatabricksText: "Azure Databricks",
                 mysqlText: "MySQL",
                 postgresqlText: "PostgreSQL",
 				apacheDorisText: "Apache Doris",
@@ -1313,6 +1336,7 @@
                 cubejs: "Cubejs",
 				trino : "Trino",
                 semanticModel: "SemanticModel",
+                azuredatabricks: "Azure Databricks",
 				prestoConnectionTypeText: "Connection Type",
                 opendistromessage: "To connect to an Amazon Web Services-hosted Elasticsearch instance, please use the Open Distro connection type.",
 				elasticsearchTypeText :"Connection Type",
@@ -1527,6 +1551,7 @@
                     redShift:"Redshift",
                     azureSQLDataWarehouse:"AzureSQLDataWarehouse",
 					microsoftfabric: 'Microsoft Fabric',
+                    azuredatabricks: "Azure Databricks",
                     jira: {
                         name: "Jira",
                         templates: {
@@ -2613,6 +2638,7 @@
 		filterWhereExpression: "Filter where the keyword is restricted in the expression",
 		countDistinctExpression: "COUNT(DISTINCT()) restricted in the Expression. Instead, use COUNTD().",
                 invalidExpSyntax: "Incorrect Syntax near Open/Close bracket(s).",
+                invalidStringBrackets: "Square brackets are not supported within string literals.",
 				arrayTypeExpression: "Array type expressions are restricted in the expression.",
                 saveParameter: "The parameter is not saved. Do you want to save and continue?",
                 InValidParameter: "Data type mismatched. Please select a valid data type parameter.",
@@ -2776,6 +2802,7 @@
                 failedToUploadFile: "Error in Uploading File.Please Upload again.",
 				invalidZipFileMessage: '400 - Invalid files were found inside the ZIP. Only .bbix files are allowed.',
                 missedFeaturesErr: "Some features used in the dashboard are currently not supported by the web designer.",
+				closeDashboardTabs: "All open linked dashboard tabs will be closed. Do you want to continue?",
                 serverLoginErr: "ReportServer failed to login with specified credentials.",
                 failedToOpenDashboard: "Dashboard Designer failed to open the dashboard.",
 				invalidWidgetId: "The widget item details not found.",
@@ -2991,6 +3018,7 @@
                 tableList: "The list of tables to be dropped ",
                 queryViewDSCancel: "Do you want to cancel establishing data connection?",
                 queryViewEditCancel: "Are you sure you want to cancel the data source editing?",
+				invalidExpressionAlertMessage: "One or more expressions reference invalid fields. Click \"Show Details\" to review the affected expressions. Click \"Yes\" to save the data source with these invalid expressions, or click \"No\" to return to the Query Designer and correct them before saving.",
                 restrictedFieldMessage: "Aggregated Expressions cannot be added to this section.",
                 colorSettingsWarningMessage: "Color settings will not be applied for this type of chart.",
                 colorSettingsAdvanceSettingsWarningMessage: "Advance Color settings will not be applied for this type of chart.",
@@ -7047,6 +7075,7 @@
 				enableMobileView: "Restrict Mobile View On Desktop",
                 showWidgetCellCount: "Show Widget Cell Count",
 				enableRTL: "Enable RTL",
+                enableFilterOverview: "Enable Filter Overview",
 				widgetInteractionValues: {
                     reorder: "Column reorder applied",
                     columnchooser: "Column exclusion applied"
@@ -9363,7 +9392,12 @@
                 fill: "Fill",
                 enableBackgroundColor: "Enable Background Color",
                 enableBackgroundImage: "Enable Background Image",
-				selectDashboard: "Select Dashboard"
+				selectDashboard: "Select Dashboard",
+				action: "Action",
+				actionType: "Type",
+				urlFiltering: "URL Filtering",
+				applyAllSlicers: "Apply All Slicers",
+				clearAllSlicers: "Clear All Slicers"
             },
             exportListing: {
                 title: "Export",

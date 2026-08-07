@@ -20,7 +20,7 @@
           "Newtonsoft.Json": "13.0.4",
           "OpenTelemetry.Exporter.Console": "1.15.3",
           "OpenTelemetry.Extensions.Hosting": "1.15.3",
-          "Syncfusion.Dashboard.Core": "16.1.90.0"
+          "Syncfusion.Dashboard.Core": "16.2.5.0"
         },
         "runtime": {
           "BoldBi.Ai.Connectors.Anthropic.dll": {}
@@ -1084,19 +1084,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core/16.1.90.0": {
+      "Syncfusion.Dashboard.Core/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization.DOM/16.1.90.0": {
+      "Syncfusion.Dashboard.Web.Serialization.DOM/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.DOM.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1108,19 +1108,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Json.Base/16.1.90.0": {
+      "Syncfusion.Dashboard.Json.Base/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Json.Base.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Xml.Base/16.1.90.0": {
+      "Syncfusion.Dashboard.Xml.Base/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Xml.Base.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1148,11 +1148,11 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core.XmlRepository/16.1.90.0": {
+      "Syncfusion.Dashboard.Core.XmlRepository/16.2.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.XmlRepository.dll": {
-            "assemblyVersion": "16.1.90.0",
-            "fileVersion": "16.1.90.0"
+            "assemblyVersion": "16.2.5.0",
+            "fileVersion": "16.2.5.0"
           }
         }
       },
@@ -1798,12 +1798,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core/16.1.90.0": {
+    "Syncfusion.Dashboard.Core/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization.DOM/16.1.90.0": {
+    "Syncfusion.Dashboard.Web.Serialization.DOM/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1813,12 +1813,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Json.Base/16.1.90.0": {
+    "Syncfusion.Dashboard.Json.Base/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Xml.Base/16.1.90.0": {
+    "Syncfusion.Dashboard.Xml.Base/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1838,7 +1838,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.XmlRepository/16.1.90.0": {
+    "Syncfusion.Dashboard.Core.XmlRepository/16.2.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

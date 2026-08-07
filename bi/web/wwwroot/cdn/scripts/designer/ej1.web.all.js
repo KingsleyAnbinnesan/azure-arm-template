@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.web.all.js
-*  version : 16.1.90
+*  version : 16.2.5
 *  Copyright Syncfusion Inc. 2001 - 2026. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -108259,6 +108259,13 @@ var BoldBIDashboardSparkline;
                         end = !BoldBIDashboard.isNullOrUndefined(this.model.locale.displayFormat) ? new Date(year, month, day) : end;
                     }
                     isWrongFormat = !isWrongFormat ? (+start > +end) : isWrongFormat;
+                    if (!isWrongFormat && this.model.limitDateSelection && !BoldBIDashboard.isNullOrUndefined(start) && !BoldBIDashboard.isNullOrUndefined(end)) {
+                        this.selectedStartDate = { date: new Date(start.getTime()) };
+                        var calculatedDays = this._getCalculatedDays();
+                        if (+end > +calculatedDays.maxDate) {
+                            end = new Date(calculatedDays.maxDate.getTime());
+                        }
+                    }
                     if (!isWrongFormat) {
                         this._removeDatePickerWrongFormat();
                         bbdesigner$(this.target).addClass("e-popup-focus");
@@ -108322,6 +108329,13 @@ var BoldBIDashboardSparkline;
                             this.leftCalenderDate = this._setCalendarDate(new Date(start.getTime()));
                             this.selectedStartDate = { date: new Date(start.getTime()) };
                             this._updateCalendar("left");
+                            if (this.model.limitDateSelection && !BoldBIDashboard.isNullOrUndefined(end)) {
+                                var calculatedDays = this._getCalculatedDays();
+                                if (+end > +calculatedDays.maxDate) {
+                                    end = new Date(calculatedDays.maxDate.getTime());
+                                    this.container.find("input[name=daterangepicker_end]").val(BoldBIDashboard.globalize.format(end, this.format, this.model.locale.culture));
+                                }
+                            }
                             this._removeStartDateWrongFormat();
                             this._removeStartDateFocus();
                             if (!BoldBIDashboard.isNullOrUndefined(this.selectedEndDate) && !(BoldBIDashboard.isNullOrUndefined(end) ||
@@ -108362,6 +108376,14 @@ var BoldBIDashboardSparkline;
                         month = !BoldBIDashboard.isNullOrUndefined(this.model.locale.displayFormat) ? this.model.locale.displayFormat.indexOf('M') === minusOne ? this.endDate.getMonth() : end.getMonth() : end.getMonth();
                         day = !BoldBIDashboard.isNullOrUndefined(this.model.locale.displayFormat) ? this.model.locale.displayFormat.indexOf('d') === minusOne ? this.endDate.getDate() : end.getDate() : end.getDate();
                         end = !BoldBIDashboard.isNullOrUndefined(this.model.locale.displayFormat) ? new Date(year, month, day) : end;
+                        if (this.model.limitDateSelection && !BoldBIDashboard.isNullOrUndefined(start) && !BoldBIDashboard.isNullOrUndefined(end)) {
+                            this.selectedStartDate = { date: new Date(start.getTime()) };
+                            var calculatedDays = this._getCalculatedDays();
+                            if (+end > +calculatedDays.maxDate) {
+                                end = new Date(calculatedDays.maxDate.getTime());
+                                this.container.find("input[name=daterangepicker_end]").val(BoldBIDashboard.globalize.format(end, this.format, this.model.locale.culture));
+                            }
+                        }
                         if (!BoldBIDashboard.isNullOrUndefined(end)) {
                             this.selectedEndDate = { date: new Date(end.getTime()) };
                             this.rightCalenderDate = this._setCalendarDate(new Date(end.getTime()));
@@ -125023,6 +125045,7 @@ var BoldBIDashboardDateRangePicker = (function (_super) {
             startDate: null,
             endDate: null,
             enableTimePicker: false,
+            preserveEndTimeOnDateChange: false,
             ranges: null,
 			selectedRange: null,
             previouseRange: null,
@@ -125992,8 +126015,11 @@ var BoldBIDashboardDateRangePicker = (function (_super) {
         if (BoldBIDashboard.isNullOrUndefined(dateString) || dateString === "")
             return;
         var currentDate = new Date(dateString);
-        if (this._selectedStartDate != null && this._selectedEndDate != null)
+        if (this._selectedStartDate != null && this._selectedEndDate != null) {
+            if (this.model.preserveEndTimeOnDateChange && this.model.enableTimePicker && this._rightTP && this._rightTP.model.value)
+                this._preservedEndTime = this._rightTP.model.value instanceof Date ? new Date(this._rightTP.model.value.getTime()) : this._rightTP.model.value;
             this._selectedStartDate = null;
+        }
         if (this._selectedStartDate == null) {
             this._selectedStartDate = currentDate;
             this._selectedEndDate = null;
@@ -126016,15 +126042,23 @@ var BoldBIDashboardDateRangePicker = (function (_super) {
         } else if ((this._selectedStartDate !== null && this._selectedEndDate == null) && !(currentDate < this._selectedStartDate)) {
             var minDate = currentDate;
             var dateString = bbdesigner$(e.currentTarget).attr("data-date");
+            var selectedEndDate = new Date(dateString);
+            if (this.model.preserveEndTimeOnDateChange && this._preservedEndTime) {
+                var endTime = this._preservedEndTime instanceof Date ? this._preservedEndTime :
+                    BoldBIDashboard.parseDate(this._preservedEndTime, this.model.timeFormat, this.model.locale);
+                if (endTime)
+                    selectedEndDate.setHours(endTime.getHours(), endTime.getMinutes(), endTime.getSeconds(), endTime.getMilliseconds());
+            }
             this._rightDP._stopRefresh = true;
-            this._rightDP.option("value", new Date(dateString));
+            this._rightDP.option("value", selectedEndDate);
             this._rightDP._stopRefresh = false;
             if (this._rightTP)
-                this._rightTP.option("value", new Date(dateString));
+                this._rightTP.option("value", selectedEndDate);
             this._rightDP.element.parents(".e-datewidget").removeClass("e-error");
             var endElement = bbdesigner$(this.datePopup.find('.current-month[data-date="' + dateString + '"]'));
             this._selectedStartDate = this.model.startDate;
-            this._selectedEndDate = new Date(dateString);
+            this._selectedEndDate = selectedEndDate;
+            this._preservedEndTime = null;
             this._setEndDate(this._selectedEndDate, endElement, true);
             this._startDate = {};
             this._startDate.date = this._selectedStartDate;
@@ -126297,6 +126331,7 @@ var BoldBIDashboardDateRangePicker = (function (_super) {
     };
     BoldBIDashboardDateRangePicker.prototype._clearRanges = function (e) {
         this._updateRangesList();
+        this._preservedEndTime = null;
         this._setOption("value", "");
         if (this.popup) this._rightDP.element.parents(".e-datewidget").removeClass("e-val-error");
         this._selectedStartDate = null;

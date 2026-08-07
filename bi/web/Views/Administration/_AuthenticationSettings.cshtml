@@ -224,9 +224,9 @@
                             }
                             <button type="submit" id="update-auth-control" class="primary-button app-btn-primary float-end">@T["Save"]</button>
                             <button type="submit" id="update-azure-b2c-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
-                            <button type="submit" id="update-oauth-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
-                            <button type="submit" id="update-openid-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
-                            <button type="submit" id="update-jwt-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
+                            <button type="button" id="update-oauth-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
+                            <button type="button" id="update-openid-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
+                            <button type="button" id="update-jwt-settings" class="primary-button app-btn-primary float-end update-auth-settings">@T["Save"]</button>
                         }
                     </div>
                 </div>
@@ -998,7 +998,7 @@
                                 <div id="jwt-page-body" class="col-12 bi-page-body">
                                     <form id="jwt-setting" name="jwtSettingsForm" class="auth-settings-form form-top-margin no-padding" method="post" action="@Url.Action("UpdateAuthenticationSettings", "Administration")" enctype="multipart/form-data" autocomplete="off">
                                         <input type="hidden" name="jwtAuthenticationProvider" value="@ViewBag.JwtSettings.AuthProvider">
-                                        <input type="hidden" name="jwtLogo" value="">
+                                        <input type="hidden" name="jwtLogo" value="@ViewBag.JwtSettings.LogoUrl">
                                         <div class="col-12 no-padding separator-margin">
                                             <div class="col-md-12 no-padding">
                                                 <div class="col-12 no-padding ">
@@ -1031,7 +1031,7 @@
                                                         <div class="upload-options">
                                                             <label>
                                                                 <span>@T["Change logo"]</span>
-                                                                <input type="file" class="image-upload" accept="image/png,image/jpeg,image/svg+xml" name="jwtLogoUrl" required/>
+                                                                <input type="file" class="image-upload" accept="image/png,image/jpeg,image/svg+xml" name="jwtLogoUrl" />
                                                             </label>
                                                         </div>
                                                     </div>

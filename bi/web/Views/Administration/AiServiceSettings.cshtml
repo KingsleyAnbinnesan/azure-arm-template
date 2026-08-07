@@ -1,4 +1,14 @@
 @{
+    string GetCompactMaskedValue(string prefix, string suffix, bool isConfigured)
+    {
+        if (!isConfigured)
+        {
+            return string.Empty;
+        }
+
+        return string.Concat(prefix ?? string.Empty, new string('.', 112), suffix ?? string.Empty);
+    }
+
     var globalAppSettings = _globalAppSettings;
     var isMaster = globalAppSettings.SystemSettings.IsMaster;
     bool isSelfHosted = ServerAppConfig.IsSelfHosted;
@@ -47,6 +57,9 @@
     var openai = GlobalAppSettings.GetDescription(AIModel.OpenAI);
     var azureai = GlobalAppSettings.GetDescription(AIModel.AzureAI);
     var anthropic = GlobalAppSettings.GetDescription(AIModel.Anthropic);
+    var openAiDisplayKey = GetCompactMaskedValue(openAi?.ApiKeyPrefix, openAi?.ApiKeySuffix, openAi?.IsApiKeyConfigured ?? false);
+    var azureAiDisplayKey = GetCompactMaskedValue(azureAI?.ApiKeyPrefix, azureAI?.ApiKeySuffix, azureAI?.IsApiKeyConfigured ?? false);
+    var anthropicDisplayKey = GetCompactMaskedValue(anthropicAI?.ApiKeyPrefix, anthropicAI?.ApiKeySuffix, anthropicAI?.IsApiKeyConfigured ?? false);
 }
 
 @section styles{
@@ -56,6 +69,16 @@
     <environment exclude="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.min.css" />
     </environment>
+    <style nonce="@Context.Items["StyleNonce"]">
+        .ai-service-dropdown .bootstrap-select > .dropdown-toggle .caret {
+            border-top: 4px solid currentColor;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            border-bottom: 0;
+            transform: none;
+            margin-top: -2px;
+        }
+    </style>
 }
 @section scripts{
     <environment include="Development,CloudDevelopment">
@@ -160,8 +183,8 @@
                                         @class = "app-textbox-label"
                                     })
                                 </div>
-                                <div>
-                                    <input type="text" id="open-ai-api-key" class="form-control txt-holder validation-padding mail-settings-fields" name="openai_apikey" placeholder="@T["Open AI API Key"]" value="@openAi.OpenAiApiKey" />
+                                <div class="form-input-field col-lg-5 float-start no-padding">
+                                    <input type="text" id="open-ai-api-key" class="form-control txt-holder validation-padding mail-settings-fields" name="openai_apikey" placeholder="@T["Open AI API Key"]" value="@openAiDisplayKey" data-masked-value="@openAiDisplayKey" autocomplete="off" />
                                     <span class="validation-errors"></span>
                                 </div>
                             </div>
@@ -213,8 +236,8 @@
                                         @class = "app-textbox-label"
                                     })
                                 </div>
-                                <div>
-                                    <input type="text" id="azureai-apikey" class="form-control txt-holder validation-padding mail-settings-fields" name="azureai_apikey" placeholder="@T["Azure AI API Key"]" value="@azureAI.AzureAiApiKey" />
+                                <div class="form-input-field col-lg-5 float-start no-padding">
+                                    <input type="text" id="azureai-apikey" class="form-control txt-holder validation-padding mail-settings-fields" name="azureai_apikey" placeholder="@T["Azure AI API Key"]" value="@azureAiDisplayKey" data-masked-value="@azureAiDisplayKey" autocomplete="off" />
                                     <span class="validation-errors"></span>
                                 </div>
                             </div>
@@ -226,8 +249,8 @@
                                         @class = "app-textbox-label"
                                     })
                                 </div>
-                                <div>
-                                    <input type="text" id="anthropic-api-key" class="form-control txt-holder validation-padding mail-settings-fields" name="anthropic_apikey" placeholder="@T["Anthropic API Key"]" value="@anthropicAI.AnthropicApiKey" />
+                                <div class="form-input-field col-lg-5 float-start no-padding">
+                                    <input type="text" id="anthropic-api-key" class="form-control txt-holder validation-padding mail-settings-fields" name="anthropic_apikey" placeholder="@T["Anthropic API Key"]" value="@anthropicDisplayKey" data-masked-value="@anthropicDisplayKey" autocomplete="off" />
                                     <span class="validation-errors"></span>
                                 </div>
                             </div>
